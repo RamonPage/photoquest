@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font: .625em Helvetica,Arial,sans-serif;
-  background: #ECE5CE url("/images/bg-body.png?3243324");
+  background: #ECE5CE url("/images/bg-body.png?32433245");
   color: #363636;
 }
 
@@ -22,7 +22,7 @@ body {
 	top: 0;
 	left: 0;
 	z-index: 1000;
-	background: transparent url("/images/railsrumble.png?3243324") no-repeat 0 0;
+	background: transparent url("/images/railsrumble.png?32433245") no-repeat 0 0;
 	width: 224px;
 	height: 223px;
 	display: none;	
@@ -128,7 +128,7 @@ Header
 	height: 86px;
 	padding: 0 0 0 330px;
 	line-height: 3.4em;
-	background: transparent url("/images/photoquest-logo.png") no-repeat 0 0;
+	background: transparent url("/images/photoquest-logo.png?1") no-repeat 0 0;
 	border: none;
 }
 
@@ -178,7 +178,7 @@ Content
 #content #picture {
 	margin: auto;
 	padding: 30px 0;
-	background: transparent url("/images/bg-picture.png?3243324");
+	background: transparent url("/images/bg-picture.png?32433245");
 	-webkit-border-radius: .6em; 
 	-moz-border-radius: .6em;
 	border-radius: .6em;
