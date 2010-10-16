@@ -15,7 +15,7 @@
 
   %h2 Send a photo and earn 500 points
   
-  = simple_form_for @quest_adapter, :url => challenges_path do |f|
+  = simple_form_for Quest.new, :url => challenges_path do |f|
     %fieldset
       = f.input :image_url, :input_html => { :maxlength => 200 }
       = f.input :page_where_image_is, :input_html => { :maxlength => 200 }
