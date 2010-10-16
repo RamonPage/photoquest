@@ -4,6 +4,7 @@ class ChallengesController < ApplicationController
   
   def create
     quest_adapter = QuestAdapter.new params[:quest_form]
+    quest = Quest.create_from(quest_adapter)
   end
   
   def move
