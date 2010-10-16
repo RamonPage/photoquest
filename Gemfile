@@ -4,6 +4,8 @@ gem 'rails', '3.0.1'
 
 gem "json", "~> 1.4.6"
 gem "json_pure", "~> 1.4.6"
+gem 'inploy' 
+gem 'test-unit'
 
 gem 'couchrest_model', :git => 'git://github.com/couchrest/couchrest_model.git'
 gem "haml", "~> 3.0.21"
