@@ -1,0 +1,148 @@
+/*
+CSS
+*/
+
+html {
+  background-color: #fff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font: .625em Georgia, Serif;
+  background-color: #fff;
+  color: #363636;
+}
+
+#wrap {
+  margin: 0 auto;
+  padding: 20px 0 0 0;
+  width: 960px;
+  font-size: 1.2em;
+}
+
+/*
+General
+*/
+
+p {
+	margin: 1.4em 0;
+	padding: 0;
+	line-height: 1.4em;
+}
+
+img {
+	border: 0;
+}
+
+hr {
+	display: none;
+}
+
+a,
+a:link,
+a:active,
+a:visited {
+	color: #033649;
+	text-decoration: none;
+	border-bottom: 1px dotted #033649;
+}
+
+a:hover {
+	border-bottom: 1px solid #033649;
+}
+
+blockquote {
+  margin: auto;
+  padding: 0;
+  width: 520px;
+  background: transparent url(../images/quote-left.gif) no-repeat 0 0;
+  text-align: center;
+  color: #033649;
+  font-size: 2em;
+  font-style: italic;
+}
+
+blockquote p {
+	line-height: 2em;
+	background: transparent url(../images/quote-right.gif) no-repeat bottom right;
+}
+
+/*
+Headers
+*/
+
+h1,
+h2,
+h3,
+h4 {
+	line-height: 1.286;
+	margin: .4em 0;
+	padding: 0;
+	text-shadow: 1px 1px 0 #fff;
+}
+
+h1 {
+	font-weight: normal;
+	font-size: 2.2em;
+	text-align: center;
+	color: #031634;
+}
+
+h2 {
+	margin: .643em 0;
+	font-weight: normal;
+	font-size: 1.8em; 
+	color: #033649;
+	font-style: italic;
+	clear: both;
+}
+
+h3 {
+	margin: .643em 0;
+	font-weight: normal;
+	font-size: 1.6em;
+	color: #036564;
+}
+
+h4 {
+	margin: .643em 0;
+	font-weight: normal;
+	font-size: 1.4em; 
+	color: #036564;
+}
+
+/*
+Header
+*/
+
+#header {
+	border-bottom: 1px dotted #e9e9e9;
+}
+
+#header #logo a {
+  display: block;
+  width: 200px;
+  height: 44px;
+  border: none;
+}
+
+/*
+Content
+*/
+
+#content {
+  margin: 0 20px;
+  font-size: 1.2em;
+}
+
+/*
+Footer
+*/
+
+#footer {
+  clear: both;
+  font-size: .9em;
+  padding: 0 20px;
+  border-top: 1px dotted #e9e9e9;
+}

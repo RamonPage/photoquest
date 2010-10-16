@@ -1,20 +1,26 @@
 !!!
-%html{ :lang => "pt-br", :xmlns => "http://www.w3.org/1999/xhtml" }
+%html
   %head
-    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }/
+    %meta{ :charset => "utf-8" }/
     %title Photoquest
     %meta{ :name => "keywords", :content => "" }/
     %meta{ :name => "description", :content => "" }/
-    = stylesheet_link_tag "application", :media => "all", :cache => "all"
+    = stylesheet_link_tag "photoquest", :media => "all", :cache => "all"
+    %link{ :rel => "stylesheet", :href => "http://fonts.googleapis.com/css?family=Reenie+Beanie&subset=latin" }
     = javascript_include_tag "jquery.min.js", "rails.js", "application.js"
     = csrf_meta_tag
   %body
-    #header
-      %p
-        %strong#logo_screen
-          Logo entra aqui
-    %hr#header_delimiter
-    #main_content
-      = yield
-    %hr#footer_delimiter
-    #footer
+    #wrap
+      #header
+        %h1
+          Photoquest - The challenge
+        #logo
+          %a
+            %img{ :src => "images/photoquest-logo.png", :alt => "Photoquest" }
+      %hr
+      #main_content
+        = yield
+      %hr
+      #footer
+        %p
+          &copy; 2010 Photoquest
