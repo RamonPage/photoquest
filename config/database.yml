@@ -7,5 +7,5 @@ test:
   database: railsrumble_test
 
 production:
-  server: 
-  database: 
+  server: http://localhost:5984
+  database: railsrumble
