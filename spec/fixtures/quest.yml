@@ -8,3 +8,41 @@
     - Paris 
     - London
   answer: Chicago
+- id: quest2
+  image_url: http://farm3.static.flickr.com/2314/2462704623_8c25794300.jpg
+  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2462704623/in/set-72157604872130657/
+  questions:
+    - Orlando
+    - San Francisco
+    - Stockholm
+    - Prague 
+    - London
+  answer: London
+- id: quest3
+  image_url: http://farm4.static.flickr.com/3658/4080607831_cdbe797c21_o.jpg
+  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2462704623/in/set-72157604872130657/
+  questions:
+    - Rio
+    - Brussels
+    - Barcelona
+    - Zurich
+    - Lion
+  answer: Zurich
+- id: quest4
+  image_url: http://farm3.static.flickr.com/2401/2460450782_04b0698984_o.jpg
+  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2460450782/in/set-72157604847089076/
+  questions:
+    - Waterloo
+    - Windsor
+    - London
+    - Zurich
+    - Paris
+  answer: Windsor
+  
+  
+  
+
+  
+  
+  
+  
