@@ -6,8 +6,8 @@
 
 - content_for :challenge do
   %ul#possible_answers
-    - @quest.questions.each do |question|
-      %li= button_to(question, :action => :move, :id => @quest.id, :answer => question)
+    - @quest.answers.each do |answer|
+      %li= button_to(answer, :action => :move, :id => @quest.id, :answer => answer)
 
 - content_for :content do
   #picture
@@ -18,10 +18,10 @@
       = f.input :image_url
       = f.input :page_where_image_is
       = f.input :correct_answer
-      = f.input :wrong_answer1
-      = f.input :wrong_answer2
-      = f.input :wrong_answer3
-      = f.input :wrong_answer4
+      = f.input :incorrect_answer1
+      = f.input :incorrect_answer2
+      = f.input :incorrect_answer3
+      = f.input :incorrect_answer4
       = f.button :submit
 
   - if @move

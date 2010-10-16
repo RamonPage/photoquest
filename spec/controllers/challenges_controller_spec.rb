@@ -11,7 +11,7 @@ describe ChallengesController do
     
     it "should have a quest" do
       get :index
-      assigns(:quest).answer.should == "Chicago"
+      assigns(:quest).correct_answer.should == "Chicago"
     end
 
     context "when the user has a session already recorded" do

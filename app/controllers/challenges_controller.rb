@@ -25,6 +25,7 @@ class ChallengesController < ApplicationController
   def fetch_current_player
     if session[:player_id] 
       @player = Player.get session[:player_id] 
+      @player ||= Player.create
     else
       @player = Player.create
       session[:player_id] = @player.id
