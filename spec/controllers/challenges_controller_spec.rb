@@ -6,12 +6,25 @@ describe ChallengesController do
     quest = Quest.first
     Quest.stub!(:draw).and_return(quest)
   end
+
+  def mock_player(stubs={})
+    @mock_player ||= mock_model(Player,stubs).as_null_object 
+  end 
   
   describe "GET index" do
+    
     it "should have a quest" do
       get :index
       assigns(:quest).answer.should == "Chicago"
     end
+
+    context "when the user has a session already recorded" do
+      it "should fetch its contents" do
+        session[:player] = mock_player 
+        get :index
+        assigns[:player].should == mock_player 
+      end 
+    end 
   end
   
   describe "POST move" do
