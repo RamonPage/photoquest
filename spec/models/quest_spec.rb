@@ -26,5 +26,18 @@ describe Quest do
     end
     
   end
+
+  describe "finding a quest that a given player has not yet answered" do
+    it 'should fetch his list of already answered questions' do
+      player = mock_model(Player).as_null_object
+      player.should_receive(:answered_quests)
+      Quest.find_quest_for(player) 
+    end
+
+    it "should retrieve a quest that the player hasn't answered yet" do
+      player = Player.find("player1")
+      player.answered_quests.should_not include(Quest.find_quest_for(player))
+    end 
+  end 
   
 end

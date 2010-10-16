@@ -8,6 +8,10 @@ class Quest < CouchRest::Model::Base
   def correct_answer?(answer)
     self.correct_answer == answer
   end
+
+  def self.find_quest_for(player)
+    player.answered_quests 
+  end 
   
   def self.draw
     Quest.all.draw.first

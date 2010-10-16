@@ -1,7 +1,5 @@
 class Move < CouchRest::Model::Base
-  
   property :answer, String
-  
   belongs_to :quest
 
   def correct?

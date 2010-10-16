@@ -1,20 +1,16 @@
 - id: move1
-  player_id: player1
   quest_id: quest1
   answer: Portland
 
 - id: move2
-  player_id: player1
   quest_id: quest2
   answer: Orlando
 
 - id: move3
-  player_id: player2
-  quest_id: quest2
+  quest_id: quest3
   answer: Orlando
 
 - id: move4
-  player_id: player3
   quest_id: quest1
   answer: Portland
 
