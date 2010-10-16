@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font: .625em Helvetica,Arial,sans-serif;
-  background: #519548 url('/images/bg-body.png?');
+  background: #ECE5CE url("/images/bg-body.png?3243324");
   color: #363636;
 }
 
@@ -15,6 +15,16 @@ body {
   padding: 20px 0 0 0;
   width: 960px;
   font-size: 1.2em;
+}
+
+#railsrumble {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	background: transparent url("/images/railsrumble.png?3243324") no-repeat 0 0;
+	width: 224px;
+	height: 223px;	
 }
 
 /*
@@ -114,7 +124,7 @@ Content
 #content #picture {
 	margin: auto;
 	padding: 30px 0;
-	background: transparent url(/images/bg-picture.png);
+	background: transparent url("/images/bg-picture.png?3243324");
 	-webkit-border-radius: .6em; 
 	-moz-border-radius: .6em;
 	border-radius: .6em;

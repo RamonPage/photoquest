@@ -2,7 +2,7 @@
 %html
   %head
     %meta{ :charset => "utf-8" }/
-    %title Photoquest
+    %title Photoquest - The challenge
     %meta{ :name => "keywords", :content => "" }/
     %meta{ :name => "description", :content => "" }/
     = stylesheet_link_tag "reset", "photoquest", :cache => "all", :media => "all"
@@ -24,7 +24,5 @@
         %p
           &copy; 2010 Photoquest
     = render :partial => "layouts/speedo" 
-    = render :partial => "layouts/analytics" 
-    %script{:type=>"text/javascript"}
-      var rumbleUrl = 'http://railsrumble.com';
-      %script{:type=>"text/javascript", :src=>"http://blog.railsrumble.com/javascripts/rumble-r10-sash.js"}
+    = render :partial => "layouts/analytics"
+    #railsrumble
