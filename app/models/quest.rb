@@ -9,4 +9,8 @@ class Quest < CouchRest::Model::Base
     self.answer == answer
   end
   
+  def draw
+    Quest.all.draw.first
+  end
+  
 end

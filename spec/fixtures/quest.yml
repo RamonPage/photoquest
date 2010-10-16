@@ -1,5 +1,5 @@
 - id: quest1
-  image_url: http://farm4.static.flickr.com/3081/2558637383_96104ccea4.jpg
+  image_url: http://farm4.static.flickr.com/3081/2558637383_d8a797b758_o.jpg
   page_where_image_is: http://www.flickr.com/photos/viniciusteles/2558637383/in/set-72157605484089896/
   questions:
     - Portland 
@@ -9,8 +9,8 @@
     - London
   answer: Chicago
 - id: quest2
-  image_url: http://farm3.static.flickr.com/2314/2462704623_8c25794300.jpg
-  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2462704623/in/set-72157604872130657/
+  image_url: http://farm4.static.flickr.com/3047/2463536032_c39ff57b62_o.jpg
+  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2463536032/in/set-72157604872130657/
   questions:
     - Orlando
     - San Francisco

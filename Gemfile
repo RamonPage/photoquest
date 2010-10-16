@@ -12,6 +12,7 @@ gem "haml-rails", "~> 0.2"
 gem "jquery-rails", "~> 0.1.3"
 gem 'configloader', "~> 0.2.2"
 gem "inploy"
+gem "arrayextension"
 
 group :test, :development do
   gem "capybara"
