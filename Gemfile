@@ -11,6 +11,7 @@ gem "haml", "~> 3.0.21"
 gem "haml-rails", "~> 0.2"
 gem "jquery-rails", "~> 0.1.3"
 gem 'configloader', "~> 0.2.2"
+gem "inploy"
 
 group :test, :development do
   gem "capybara"

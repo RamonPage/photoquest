@@ -10,6 +10,7 @@ RSpec.configure do |config|
   
   config.before(:each) do
     Fixtures.create_db
+    Fixtures.load
   end
 
   config.after(:each) do
