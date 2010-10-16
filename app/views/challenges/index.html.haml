@@ -13,8 +13,5 @@
     - content_for :sidebar do
       #sidebar
         %h3 Score
-        
-        #score
-          12000
-          
-        %p#message= "Será que você acertou? #{@move.correct?}"
+        #score= @score
+        %p#message= "Is it correct? #{@move.correct?}"
