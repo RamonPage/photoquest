@@ -1,6 +1,5 @@
 class ChallengesController < ApplicationController
   before_filter :fetch_quest
-
   
   def move
     @move = Move.create :quest_id => params[:id], :correct => correct 
@@ -15,7 +14,7 @@ class ChallengesController < ApplicationController
     end
     
     def fetch_quest
-      @quest = Quest.first
+      @quest = Quest.draw
     end
   
 end

@@ -42,6 +42,7 @@ GEM
     activesupport (3.0.1)
     arel (1.0.1)
       activesupport (~> 3.0.0)
+    arrayextension (0.2.0)
     autotest (4.4.1)
     autotest-rails (4.1.0)
       ZenTest
@@ -140,6 +141,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  arrayextension
   autotest
   autotest-rails
   capybara
