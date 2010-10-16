@@ -1,6 +1,10 @@
 class ChallengesController < ApplicationController
-  before_filter :fetch_quest
-  before_filter :fetch_current_player
+  before_filter :fetch_quest, :except => ['create']
+  before_filter :fetch_current_player, :except => ['create']
+  
+  def create
+    quest_adapter = QuestAdapter.new params[:quest_form]
+  end
   
   def move
     @move = Move.create :quest_id => params[:id], :answer => params[:answer]
@@ -27,7 +31,7 @@ class ChallengesController < ApplicationController
   end 
   
   def fetch_quest
+    @quest_adapter = QuestAdapter.new
     @quest = Quest.draw
-    @new_quest = Quest.new
   end
 end
