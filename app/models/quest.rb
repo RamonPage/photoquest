@@ -9,7 +9,7 @@ class Quest < CouchRest::Model::Base
     self.answer == answer
   end
   
-  def draw
+  def self.draw
     Quest.all.draw.first
   end
   
