@@ -14,11 +14,14 @@ gem 'configloader', "~> 0.2.2"
 gem "inploy"
 
 group :test, :development do
-  gem "capybara"
+  gem 'steak', '>= 1.0.0.rc.1'
+  gem 'capybara'
+
   gem "launchy"
   gem "rspec-rails", ">= 2.0.0.beta.22"
   gem "syntax"
   gem "autotest-rails"
   gem "autotest"
+
 end
 

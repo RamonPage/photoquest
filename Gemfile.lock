@@ -128,6 +128,8 @@ GEM
       ffi (~> 0.6.3)
       json_pure
       rubyzip
+    steak (1.0.0.rc.1)
+      rspec
     syntax (1.0.0)
     thor (0.14.3)
     treetop (1.4.8)
@@ -152,4 +154,5 @@ DEPENDENCIES
   launchy
   rails (= 3.0.1)
   rspec-rails (>= 2.0.0.beta.22)
+  steak (>= 1.0.0.rc.1)
   syntax
