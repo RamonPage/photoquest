@@ -106,7 +106,7 @@ Content
 */
 
 #content {
-  padding: 10px 20px;
+  padding: 10px 20px 0 20px;
   font-size: 1.2em;
 	text-align: center;
 }
@@ -114,8 +114,8 @@ Content
 #content #picture {
 	margin: auto;
 	padding: 20px 0 0 0;
-	width: 745px;
-	height: 515px;
+	width: 1005px;
+	height: 747px;
 	background: transparent url(/images/bg-picture.png) no-repeat 0 0;
 }
 
