@@ -5,7 +5,7 @@
     %title Photoquest
     %meta{ :name => "keywords", :content => "" }/
     %meta{ :name => "description", :content => "" }/
-    = stylesheet_link_tag "reset", "photoquest"
+    = stylesheet_link_tag "reset", "photoquest", :cache => "all", :media => "all"
     %link{ :rel => "stylesheet", :href => "http://fonts.googleapis.com/css?family=Vollkorn&subset=latin" }
     = javascript_include_tag "jquery.min.js", "rails.js", "application.js"
     = csrf_meta_tag
@@ -27,4 +27,4 @@
     = render :partial => "layouts/analytics" 
     %script{:type=>"text/javascript"}
       var rumbleUrl = 'http://railsrumble.com';
-    %script{:type=>"text/javascript", :src=>"http://blog.railsrumble.com/javascripts/rumble-r10-sash.js"}
+      %script{:type=>"text/javascript", :src=>"http://blog.railsrumble.com/javascripts/rumble-r10-sash.js"}
