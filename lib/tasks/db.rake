@@ -8,6 +8,13 @@ namespace :db do
     end
   end
   
+  namespace :fixtures do
+    desc "Dump quests from DB"
+    task :dump_quests => :environment do
+      Fixtures.dump_quests
+    end
+  end
+  
   desc "Delete and recreate the database"
   task :setup => :environment do
     Fixtures.setup_db

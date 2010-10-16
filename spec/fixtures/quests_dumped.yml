@@ -1,0 +1,86 @@
+--- 
+- !map:Quest 
+  image_url: http://farm4.static.flickr.com/3165/2611587165_82bf95805a_o.jpg
+  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2611587165/
+  correct_answer: San Francisco
+  incorrect_answers: 
+  - New York
+  - Paris
+  - Bologne
+  - Lausanne
+  _id: 248e033dc7798fd362996734f7edfda8
+  _rev: 1-0c8d45d36c79ecc6219582e736e8ea91
+  couchrest-type: Quest
+- !map:Quest 
+  image_url: http://farm3.static.flickr.com/2787/4109104518_aecd358d2b_o.jpg
+  page_where_image_is: http://www.flickr.com/photos/viniciusteles/4109104518/
+  correct_answer: Stockholm
+  incorrect_answers: 
+  - London
+  - Paris
+  - Prague
+  - Madrid
+  _id: 72808b5d394ddc65752e1500eae7cd42
+  _rev: 1-464bf9092eae4c86dfd63f4db49aa3c9
+  couchrest-type: Quest
+- !map:Quest 
+  image_url: http://farm4.static.flickr.com/3167/2559460218_dd5ec6e467_o.jpg
+  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2559460218
+  correct_answer: Portland
+  incorrect_answers: 
+  - San Francisco
+  - Dallas
+  - New York
+  - Washington, DC
+  _id: a9e905995f185b2c545629d8a2571bfc
+  _rev: 1-0134e3f98217fa9fe80787551c6b8472
+  couchrest-type: Quest
+- !map:Quest 
+  image_url: http://farm4.static.flickr.com/3081/2558637383_d8a797b758_o.jpg
+  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2558637383/in/set-72157605484089896/
+  correct_answer: Chicago
+  incorrect_answers: 
+  - Portland
+  - Rio
+  - Paris
+  - London
+  _id: quest1
+  _rev: 1-782a0758c8074ccc446523e9c4bb0023
+  couchrest-type: Quest
+- !map:Quest 
+  image_url: http://farm4.static.flickr.com/3047/2463536032_c39ff57b62_o.jpg
+  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2463536032/in/set-72157604872130657/
+  correct_answer: London
+  incorrect_answers: 
+  - Orlando
+  - San Francisco
+  - Stockholm
+  - Prague
+  _id: quest2
+  _rev: 1-dc044eb941696ebd56f103c808ac990c
+  couchrest-type: Quest
+- !map:Quest 
+  image_url: http://farm4.static.flickr.com/3658/4080607831_cdbe797c21_o.jpg
+  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2462704623/in/set-72157604872130657/
+  correct_answer: Zurich
+  incorrect_answers: 
+  - Rio
+  - Brussels
+  - Barcelona
+  - Lion
+  _id: quest3
+  _rev: 1-85301411af03a3225e5ca965c45337ed
+  answer: 
+  couchrest-type: Quest
+- !map:Quest 
+  image_url: http://farm3.static.flickr.com/2401/2460450782_04b0698984_o.jpg
+  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2460450782/in/set-72157604847089076/
+  correct_answer: Windsor
+  incorrect_answers: 
+  - Waterloo
+  - London
+  - Zurich
+  - Paris
+  _id: quest4
+  _rev: 1-b68a462e43b7e51420196086d01f50a4
+  couchrest-type: Quest
