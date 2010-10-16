@@ -4,6 +4,8 @@ class ChallengesController < ApplicationController
   
   def move
     @move = Move.create :quest_id => params[:id], :answer => params[:answer]
+    @player.moves << @move
+    @player.save
     @score = Score.calculate
     render :action => :index
   end
