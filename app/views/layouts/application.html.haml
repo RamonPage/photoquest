@@ -2,7 +2,7 @@
 %html
   %head
     %meta{ :charset => "utf-8" }/
-    %title Photoquest - The challenge
+    %title Where is this place? - Photoquest - The challenge
     %meta{ :name => "keywords", :content => "" }/
     %meta{ :name => "description", :content => "" }/
     = stylesheet_link_tag "reset", "photoquest", :cache => "all", :media => "all"
@@ -12,10 +12,13 @@
   %body
     #wrap
       #header
-        %h1
-          Photoquest - The challenge
+        %h1 Photoquest - The challenge
         #logo
-          = link_to image_tag("photoquest-logo.png", :alt => "Photoquest", :width => "387", :height => "107" ), "/"
+          %h2
+            = link_to "Where is this place?", "/"
+        
+        #challenge
+          = yield :challenge
       %hr
       = yield :sidebar
       #content
