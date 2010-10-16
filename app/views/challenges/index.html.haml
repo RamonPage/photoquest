@@ -1,3 +1,9 @@
+- content_for :message do
+  - if @move
+    %p#message{ :class => @move.correct? ? "correct" : "fail" }
+      = "You are correct!" if @move.correct?
+      = "You lose!" unless @move.correct?
+
 - content_for :challenge do
   %ul#possible_answers
     - @quest.questions.each do |question|
