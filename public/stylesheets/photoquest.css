@@ -283,10 +283,10 @@ ul#possible_answers li {
 	color: #1B676B;
 }
 
-.simple_form #quest_adapter_wrong_answer1,
-.simple_form #quest_adapter_wrong_answer2,
-.simple_form #quest_adapter_wrong_answer3,
-.simple_form #quest_adapter_wrong_answer4 {
+.simple_form #quest_adapter_incorrect_answer1,
+.simple_form #quest_adapter_incorrect_answer2,
+.simple_form #quest_adapter_incorrect_answer3,
+.simple_form #quest_adapter_incorrect_answer4 {
 	color: #E08E79;
 }
 
