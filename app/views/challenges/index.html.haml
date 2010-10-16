@@ -13,6 +13,8 @@
   #picture
     = image_tag(@quest.image_url)
 
+  %h2 Send a photo and earn 500 points
+  
   = simple_form_for @quest_adapter, :url => challenges_path do |f|
     %fieldset
       = f.input :image_url
@@ -29,4 +31,5 @@
       #sidebar
         %h3 Score
         #score= @score
-        %p#message= link_to "Send a photo and earn 500 points!", "#new_quest"
+        
+        %p#send-quest= link_to "Send a photo and earn 500 points!", "#new_quest"

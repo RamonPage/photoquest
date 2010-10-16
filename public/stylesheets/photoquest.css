@@ -192,6 +192,17 @@ Sidebar
 	text-align: center;
 }
 
+#sidebar #send-quest {
+	font-size: 1.2em;
+	line-height: 1.4em;
+	font-weight: bold;
+}
+
+#sidebar #send-quest a {
+	color: #fff;
+	text-shadow: none;
+}
+
 /*
 Content
 */
@@ -227,7 +238,60 @@ ul#possible_answers li {
 	float: left;
 }
 
-.button_to input[type="submit"] {
+.simple_form {
+	width: 600px;
+	margin: 0 auto;
+	padding: 0;
+	text-align: left;
+}
+
+.simple_form div {
+	clear: left;
+}
+
+.simple_form label {
+	width: 140px;
+	margin: 0 10px 4px 0;
+	padding: 12px 0 0 0;
+	display: block;
+	float: left;
+	text-align: right;
+}
+
+.simple_form input.string {
+	width: 400px;
+	margin: 0 0 4px 0;
+	padding: 4px;
+	font-size: 1.4em;
+	float: left;
+	border: solid 1px #F1D4AF;
+	outline: 0;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#EEEEEE');
+	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+}
+
+.simple_form input.string:hover,
+.simple_form input.string:focus {
+	border-color: #C5E0DC;
+}
+
+.simple_form #quest_adapter_correct_answer {
+	color: #1B676B;
+}
+
+.simple_form #quest_adapter_wrong_answer1,
+.simple_form #quest_adapter_wrong_answer2,
+.simple_form #quest_adapter_wrong_answer3,
+.simple_form #quest_adapter_wrong_answer4 {
+	color: #E08E79;
+}
+
+.button_to input[type="submit"],
+.simple_form input[type="submit"] {
 	display: inline-block;
 	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
 	*display: inline;
@@ -255,7 +319,8 @@ ul#possible_answers li {
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
 }
 
-.button_to input[type="submit"]:hover {
+.button_to input[type="submit"]:hover,
+.simple_form input[type="submit"]:hover {
 	text-decoration: none;
 	background: #ededed;
 	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dcdcdc));
@@ -263,13 +328,19 @@ ul#possible_answers li {
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dcdcdc');
 }
 
-.button_to input[type="submit"]:active {
+.button_to input[type="submit"]:active,
+.simple_form input[type="submit"]:active {
 	position: relative;
 	top: 1px;
 	color: #999;
 	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#fff));
 	background: -moz-linear-gradient(top,  #ededed,  #fff);
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff');	
+}
+
+.simple_form input[type="submit"] {
+	float: right;
+	margin: 10px 40px 0 0;
 }
 
 /*
