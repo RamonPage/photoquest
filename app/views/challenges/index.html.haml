@@ -17,13 +17,13 @@
   
   = simple_form_for @quest_adapter, :url => challenges_path do |f|
     %fieldset
-      = f.input :image_url
-      = f.input :page_where_image_is
-      = f.input :correct_answer
-      = f.input :wrong_answer1
-      = f.input :wrong_answer2
-      = f.input :wrong_answer3
-      = f.input :wrong_answer4
+      = f.input :image_url, :input_html => { :maxlength => 200 }
+      = f.input :page_where_image_is, :input_html => { :maxlength => 200 }
+      = f.input :correct_answer, :input_html => { :maxlength => 40 }
+      = f.input :wrong_answer1, :input_html => { :maxlength => 40 }
+      = f.input :wrong_answer2, :input_html => { :maxlength => 40 }
+      = f.input :wrong_answer3, :input_html => { :maxlength => 40 }
+      = f.input :wrong_answer4, :input_html => { :maxlength => 40 }
       = f.button :submit
 
   - if @move
