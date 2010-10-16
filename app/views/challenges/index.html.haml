@@ -1,12 +1,12 @@
 #picture
   = link_to image_tag("http://farm4.static.flickr.com/3081/2558637383_96104ccea4.jpg"), @quest.page_where_image_is
+
   %h2
     Where is this place?
   
-  #possible_answers
-    %ul
-      - @quest.questions.each do |question|
-        %li= button_to(question, :action => :move, :id => @quest.id, :answer => question)
-    
-  
+  %ul#possible_answers
+    - @quest.questions.each do |question|
+      %li= button_to(question, :action => :move, :id => @quest.id, :answer => question)    
 
+- if @move 
+  %p#message= "Será que você acertou? #{@move.correct}"
