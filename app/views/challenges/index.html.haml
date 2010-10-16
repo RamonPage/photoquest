@@ -9,4 +9,4 @@
       %li= button_to(question, :action => :move, :id => @quest.id, :answer => question)    
 
 - if @move 
-  %p#message= "Será que você acertou? #{@move.correct}"
+  %p#message= "Será que você acertou? #{@move.correct?}"

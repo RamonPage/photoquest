@@ -9,7 +9,7 @@ describe Move do
     it "should have the expected properties" do
       move = Move.first
       move.quest_id.should == "quest1"
-      move.correct.should == true
+      move.answer.should == "Chicago"
     end
     
   end

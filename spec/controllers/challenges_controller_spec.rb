@@ -17,7 +17,7 @@ describe ChallengesController do
   describe "POST move" do
     it "should return a move with incorrect answer" do
       post :move, :id => "quest1", :answer => "Portland"
-      assigns(:move).correct.should be_false
+      assigns(:move).correct?.should be_false
     end
 
     context "with a correct answer" do 
@@ -25,7 +25,7 @@ describe ChallengesController do
         post :move, :id => "quest1", :answer => "Chicago"
       end 
       it "should return a move" do
-        assigns(:move).correct.should be_true
+        assigns(:move).correct?.should be_true
       end
     
       it "should redirect to the index page" do
