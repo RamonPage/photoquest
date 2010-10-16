@@ -2,10 +2,9 @@
   = image_tag "http://farm4.static.flickr.com/3081/2558637383_96104ccea4.jpg"
   
 #possible_answers
-  %p Portland
-  %p Chicago
-  %p Rio de Janeiro
-  %p Paris
-  %p London
+  %ul
+    = @quest.questions.each do |question|
+      %li= question
+    
   
 
