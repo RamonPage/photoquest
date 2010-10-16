@@ -7,9 +7,17 @@
   #picture
     = image_tag(@quest.image_url)
 
+  = simple_form_for @new_quest, :url => move_challenge_path(@quest) do |f|
+    %fieldset
+      = f.input :image_url
+      = f.input :page_where_image_is
+      = f.input :questions
+      = f.input :answer
+      = f.button :submit
+
   - if @move
     - content_for :sidebar do
       #sidebar
         %h3 Score
         #score= @score
-        %p#message= "Is it correct? #{@move.correct?}"
+        %p#message= link_to "Send a photo and earn 500 points!", "#new_quest"

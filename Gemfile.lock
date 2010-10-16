@@ -129,6 +129,7 @@ GEM
       ffi (~> 0.6.3)
       json_pure
       rubyzip
+    simple_form (1.2.2)
     steak (1.0.0.rc.1)
       rspec
     syntax (1.0.0)
@@ -156,5 +157,6 @@ DEPENDENCIES
   launchy
   rails (= 3.0.1)
   rspec-rails (>= 2.0.0.beta.22)
+  simple_form
   steak (>= 1.0.0.rc.1)
   syntax

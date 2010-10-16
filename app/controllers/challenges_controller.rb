@@ -28,5 +28,6 @@ class ChallengesController < ApplicationController
   
   def fetch_quest
     @quest = Quest.draw
+    @new_quest = Quest.new
   end
 end
