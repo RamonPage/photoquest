@@ -7,7 +7,7 @@
 #possible_answers
   %ul
     - @quest.questions.each do |question|
-      %li= question
+      %li= button_to(question, :action => :move, :id => @quest.id, :answer => question)
     
   
 
