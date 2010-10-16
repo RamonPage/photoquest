@@ -52,22 +52,6 @@ a:hover {
 	border-bottom: 1px solid #033649;
 }
 
-blockquote {
-  margin: auto;
-  padding: 0;
-  width: 520px;
-  background: transparent url(../images/quote-left.gif) no-repeat 0 0;
-  text-align: center;
-  color: #033649;
-  font-size: 2em;
-  font-style: italic;
-}
-
-blockquote p {
-	line-height: 2em;
-	background: transparent url(../images/quote-right.gif) no-repeat bottom right;
-}
-
 /*
 Headers
 */
@@ -76,23 +60,20 @@ h1,
 h2,
 h3,
 h4 {
+	font-family: 'Reenie Beanie', arial, serif;
 	line-height: 1.286;
 	margin: .4em 0;
 	padding: 0;
-	text-shadow: 1px 1px 0 #fff;
 }
 
 h1 {
-	font-weight: normal;
-	font-size: 2.2em;
-	text-align: center;
-	color: #031634;
+	display: none;
 }
 
 h2 {
 	margin: .643em 0;
 	font-weight: normal;
-	font-size: 1.8em; 
+	font-size: 2.2em; 
 	color: #033649;
 	font-style: italic;
 	clear: both;
@@ -115,10 +96,6 @@ h4 {
 /*
 Header
 */
-
-#header {
-	border-bottom: 1px dotted #e9e9e9;
-}
 
 #header #logo a {
   display: block;
