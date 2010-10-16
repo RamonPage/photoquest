@@ -1,12 +1,20 @@
-#picture
-  = image_tag(@quest.image_url)
+- content_for :content do
+  #picture
+    = image_tag(@quest.image_url)
 
-  %h2
-    Where is this place?
+    %h2
+      Where is this place?
   
-  %ul#possible_answers
-    - @quest.questions.each do |question|
-      %li= button_to(question, :action => :move, :id => @quest.id, :answer => question)    
+    %ul#possible_answers
+      - @quest.questions.each do |question|
+        %li= button_to(question, :action => :move, :id => @quest.id, :answer => question)    
 
-- if @move 
-  %p#message= "Será que você acertou? #{@move.correct?}"
+  - if @move
+    - content_for :sidebar do
+      #sidebar
+        %h3 Score
+        
+        #score
+          12000
+          
+        %p#message= "Será que você acertou? #{@move.correct?}"

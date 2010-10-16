@@ -17,8 +17,9 @@
         #logo
           = link_to image_tag("photoquest-logo.png", :alt => "Photoquest", :width => "387", :height => "107" ), "/"
       %hr
+      = yield :sidebar
       #content
-        = yield
+        = yield :content
       %hr
       #footer
         %p
@@ -26,3 +27,4 @@
     = render :partial => "layouts/speedo" 
     = render :partial => "layouts/analytics"
     #railsrumble
+      %a{ :href => "http://railsrumble.com"} Rails Rumble
