@@ -43,7 +43,7 @@ describe Quest do
     it "should retrieve a quest that the player hasn't answered yet" do
       player = Player.find("player1")
       player.answered_quests.should_not include(Quest.find_quest_for(player))
-      Quest.find_quest_for(player).should == fetch_quest_from_move('move3')
+      Quest.find_quest_for(player).should be_a(Quest) 
     end 
   end 
   
