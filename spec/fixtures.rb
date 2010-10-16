@@ -31,6 +31,12 @@ class Fixtures
     delete_db
     CouchRest::Model::Base.database.create!
   end
+  
+  def self.dump_quests
+    File.open("#{Rails.root}/spec/fixtures/quests_dumped.yml", 'w') do |file|
+      YAML.dump(Quest.all, file)
+    end
+  end
 
   private
   
