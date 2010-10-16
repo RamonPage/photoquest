@@ -5,6 +5,10 @@ require 'rspec/rails'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+def fetch_quest_from_move(move_id)
+  Move.find(move_id).quest
+end 
+
 RSpec.configure do |config|
   config.mock_with :rspec
   
@@ -16,5 +20,5 @@ RSpec.configure do |config|
   config.after(:each) do
     Fixtures.delete_db
   end
-  
 end
+

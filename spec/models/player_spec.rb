@@ -11,10 +11,4 @@ describe Player do
     player.answered_quests.should include(fetch_quest_from_move('move2'))
     player.answered_quests.should_not include(fetch_quest_from_move('move3'))
   end
-
-  private
-  def fetch_quest_from_move(move_id)
-    Move.find(move_id).quest
-  end 
-  
 end

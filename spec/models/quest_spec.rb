@@ -28,6 +28,12 @@ describe Quest do
   end
 
   describe "finding a quest that a given player has not yet answered" do
+
+    it "should return the first quest available for a new player" do
+      Quest.stub!(:draw).and_return([])
+      Quest.find_quest_for(nil).should == []
+      
+    end 
     it 'should fetch his list of already answered questions' do
       player = mock_model(Player).as_null_object
       player.should_receive(:answered_quests)
@@ -37,6 +43,7 @@ describe Quest do
     it "should retrieve a quest that the player hasn't answered yet" do
       player = Player.find("player1")
       player.answered_quests.should_not include(Quest.find_quest_for(player))
+      Quest.find_quest_for(player).should == fetch_quest_from_move('move3')
     end 
   end 
   
