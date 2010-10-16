@@ -1,6 +1,10 @@
 class Move < CouchRest::Model::Base
   
-  property :quest_id, String
-  property :correct, TrueClass
+  property :answer, String
   
+  belongs_to :quest
+  
+  def correct?
+    self.quest.correct_answer?(self.answer)
+  end
 end
