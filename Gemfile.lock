@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/couchrest/couchrest_model.git
-  revision: cc2b18394617dc6b67790858e226eaabab9c0e7e
+  revision: cc2b183
   specs:
     couchrest_model (1.0.0.beta8)
       activemodel (~> 3.0.0.rc)
