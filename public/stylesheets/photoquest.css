@@ -27,6 +27,14 @@ body {
 	height: 223px;	
 }
 
+#railsrumble a {
+	display: block;
+	width: 224px;
+	height: 223px;
+	border: none;
+	text-indent: -9999px;
+}
+
 /*
 General
 */
@@ -88,8 +96,13 @@ h2 {
 h3 {
 	margin: .643em 0;
 	font-weight: normal;
+	text-transform: uppercase;
 	font-size: 1.6em;
-	color: #036564;
+	color: #E08E79;
+}
+
+#sidebar h3 {
+	color: #fff;
 }
 
 h4 {
@@ -109,6 +122,34 @@ Header
 
 #header #logo a {
   border: none;
+}
+
+/*
+Sidebar
+*/
+
+#sidebar {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1000;
+	background-color: #000;
+	width: 180px;
+	padding: 0 20px;
+	filter:alpha(opacity=70);
+	-moz-opacity:0.7;
+	-khtml-opacity: 0.7;
+	opacity: 0.7;
+	-moz-border-radius-bottomleft: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	color: #fff;
+}
+
+#sidebar #score {
+	font-size: 2.6em;
+	font-weight: bold;
+	text-align: center;
 }
 
 /*
@@ -137,7 +178,7 @@ Content
 #content #picture img {
 	background-color: #fff;
 	padding: 4px;
-	border: 1px solid #C5E0DC;
+	border: 2px solid #ECE5CE;
 }
 
 ul#possible_answers li {
