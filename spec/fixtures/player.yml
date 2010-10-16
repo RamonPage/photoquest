@@ -1,1 +1,14 @@
 - id: player1
+  move_ids:
+    - move1
+    - move2
+
+- id: player2
+  move_ids:
+    - move3
+
+- id: player3
+  move_ids:
+    - move4
+
+    
