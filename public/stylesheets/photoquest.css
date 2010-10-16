@@ -58,13 +58,13 @@ a,
 a:link,
 a:active,
 a:visited {
-	color: #033649;
+	color: #774F38;
 	text-decoration: none;
-	border-bottom: 1px dotted #033649;
+	border-bottom: 1px dotted #F1D4AF;
 }
 
 a:hover {
-	border-bottom: 1px solid #033649;
+	border-bottom: 1px solid #F1D4AF;
 }
 
 /*
@@ -120,10 +120,15 @@ Header
 */
 
 #header {
-	padding: 20px;
+	padding: 0 20px;
 }
 
 #header #logo a {
+	display: block;
+	height: 86px;
+	padding: 0 0 0 330px;
+	line-height: 3.4em;
+	background: transparent url("/images/photoquest-logo.png") no-repeat 0 0;
 	border: none;
 }
 
