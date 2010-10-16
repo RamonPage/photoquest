@@ -7,7 +7,7 @@ body {
   padding: 0;
   font: .625em Helvetica,Arial,sans-serif;
   background: #519548 url('/images/bg-body.png');
-  color: #fff;
+  color: #363636;
 }
 
 #wrap {
@@ -69,7 +69,7 @@ h1 {
 h2 {
 	margin: .643em 0;
 	font-weight: bold;
-	font-size: 2em; 
+	font-size: 2.2em;
 	color: #1B676B;
 	font-weight: normal;
 	clear: both;
@@ -94,12 +94,10 @@ Header
 */
 #header {
 	padding: 20px 0;
+	text-align: center;
 }
 
 #header #logo a {
-  display: block;
-  width: 268px;
-  height: 73px;
   border: none;
 }
 
@@ -110,10 +108,25 @@ Content
 #content {
   padding: 10px 20px;
   font-size: 1.2em;
+	text-align: center;
+}
+
+#content #picture {
+	margin: auto;
+	padding: 20px 0 0 0;
+	width: 745px;
+	height: 515px;
+	background: transparent url(/images/bg-picture.png) no-repeat 0 0;
+}
+
+#content #picture a {
+	border: none;
+}
+
+#content #picture img {
 	background-color: #fff;
-	border-radius: 8px;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
+	padding: 4px;
+	border: 1px solid #C5E0DC;
 }
 
 /*
@@ -122,6 +135,8 @@ Footer
 
 #footer {
   clear: both;
+	text-align: center;
   font-size: .9em;
   padding: 0 20px;
+	color: #774F38;
 }
