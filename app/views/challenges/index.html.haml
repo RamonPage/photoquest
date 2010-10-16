@@ -13,12 +13,15 @@
   #picture
     = image_tag(@quest.image_url)
 
-  = simple_form_for @new_quest, :url => move_challenge_path(@quest) do |f|
+  = simple_form_for @quest_adapter, :url => challenges_path do |f|
     %fieldset
       = f.input :image_url
       = f.input :page_where_image_is
-      = f.input :questions
-      = f.input :answer
+      = f.input :correct_answer
+      = f.input :wrong_answer1
+      = f.input :wrong_answer2
+      = f.input :wrong_answer3
+      = f.input :wrong_answer4
       = f.button :submit
 
   - if @move
