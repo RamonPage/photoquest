@@ -1,4 +1,11 @@
 Rr10Team114::Application.routes.draw do
+
+  resources :challenges do
+    member do
+      post 'move'
+    end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

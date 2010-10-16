@@ -5,4 +5,8 @@ class Quest < CouchRest::Model::Base
   property :questions, [String]
   property :answer, String
   
+  def correct_answer?(answer)
+    self.answer == answer
+  end
+  
 end

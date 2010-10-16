@@ -12,6 +12,8 @@ describe Quest do
       quest.page_where_image_is = "http://www.flickr.com/photos/viniciusteles/2558637383/in/set-72157605484089896/"
       quest.questions.should == %w(Portland Chicago Rio Paris London)
       quest.answer.should == "Chicago"
+      quest.correct_answer?("Portland").should be_false
+      quest.correct_answer?("Chicago").should be_true
     end
     
   end

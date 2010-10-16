@@ -1,7 +1,12 @@
 class Fixtures
 
   def self.load
-    quest_from_yaml.each { |quest| Quest.create(quest) }
+    load_model(Quest)
+    load_model(Move)
+  end
+  
+  def self.load_model(klass)
+    from_yaml(klass.to_s.downcase).each { |object| klass.create(object) }
   end
   
   def self.reload
@@ -27,9 +32,9 @@ class Fixtures
   end
 
   private
-
-    def self.quest_from_yaml
-      fixtures = File.open("#{Rails.root}/spec/fixtures/quests.yml") 
+  
+    def self.from_yaml(filename)
+      fixtures = File.open("#{Rails.root}/spec/fixtures/#{filename}.yml")
       YAML.load(fixtures)
     end
 
