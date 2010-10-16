@@ -3,8 +3,7 @@ class ChallengesController < ApplicationController
   before_filter :fetch_current_player, :except => ['create']
   
   def create
-    quest_adapter = QuestAdapter.new params[:quest_form]
-    quest = Quest.create_from(quest_adapter)
+    Quest.create params[:quest]
   end
   
   def move
@@ -25,15 +24,18 @@ class ChallengesController < ApplicationController
   def fetch_current_player
     if session[:player_id] 
       @player = Player.get session[:player_id] 
-      @player ||= Player.create
+      create_new_session if @player.nil?
     else
-      @player = Player.create
-      session[:player_id] = @player.id
+      create_new_session
     end
   end 
   
+  def create_new_session
+    @player = Player.create
+    session[:player_id] = @player.id
+  end
+  
   def fetch_quest
-    @quest_adapter = QuestAdapter.new
     @quest = Quest.draw
   end
 end

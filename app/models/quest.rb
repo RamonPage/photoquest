@@ -1,9 +1,13 @@
 class Quest < CouchRest::Model::Base
   
+  attr_accessor :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4
+
   property :image_url, String
   property :page_where_image_is, String
-  property :incorrect_answers, [String]
   property :correct_answer, String
+  property :incorrect_answers, [String]
+  
+  before_create :adapt_incorrect_answers
   
   def correct_answer?(answer)
     self.correct_answer == answer
@@ -21,16 +25,13 @@ class Quest < CouchRest::Model::Base
     ([correct_answer] + incorrect_answers).shuffle
   end
   
-  def self.create_from(quest_adapter)
-    quest = new
-    quest.image_url = quest_adapter.image_url
-    quest.page_where_image_is = quest_adapter.page_where_image_is
-    quest.correct_answer = quest_adapter.correct_answer
-    quest.incorrect_answers = [ quest_adapter.incorrect_answer1, 
-                                quest_adapter.incorrect_answer2, 
-                                quest_adapter.incorrect_answer3, 
-                                quest_adapter.incorrect_answer4]
-    quest.save
+  def adapt_incorrect_answers
+    if self.incorrect_answers.blank?
+      self.incorrect_answers = [ incorrect_answer1, 
+                                 incorrect_answer2, 
+                                 incorrect_answer3, 
+                                 incorrect_answer4 ]
+    end
   end
   
 end
