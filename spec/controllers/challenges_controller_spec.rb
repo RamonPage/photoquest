@@ -7,10 +7,6 @@ describe ChallengesController do
     Quest.stub!(:draw).and_return(quest)
   end
 
-  def mock_player(stubs={})
-    @mock_player ||= mock_model(Player,stubs).as_null_object 
-  end 
-  
   describe "GET index" do
     
     it "should have a quest" do
@@ -19,12 +15,24 @@ describe ChallengesController do
     end
 
     context "when the user has a session already recorded" do
-      it "should fetch its contents" do
-        session[:player] = mock_player 
+      it "should fetch its id" do
+        session[:player_id] = "player1" 
         get :index
-        assigns[:player].should == mock_player 
+        assigns[:player].id.should == "player1" 
       end 
-    end 
+    end
+    
+    context "when the user doesn't have a session yet" do
+      it "should create a new player and record it's id in a corresponding session" do
+        session[:player_id] = nil
+        player = Player.new :id => "123"
+        Player.should_receive(:create).and_return(player)
+        get :index
+        assigns(:player).should == player
+        session[:player_id].should == "123"
+      end
+    end
+     
   end
   
   describe "POST move" do

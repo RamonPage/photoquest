@@ -3,6 +3,7 @@ class Fixtures
   def self.load
     load_model(Quest)
     load_model(Move)
+    load_model(Player)
   end
   
   def self.load_model(klass)
