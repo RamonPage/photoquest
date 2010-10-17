@@ -1,7 +1,7 @@
 - content_for :sidebar do
   #sidebar
     %h3 Score
-    #score= @score
+    #score= link_to @score, rankings_path 
     
     %ul#last-move
       - @player.last_answers.each do |answer|

@@ -1,5 +1,9 @@
 Rr10Team114::Application.routes.draw do
 
+  get "rankings/index" , :as => "rankings" 
+
+  get "rankings/create"
+
   match "/abuses/create/:id" => "abuses#create" , :via => :post , :as => "abuses" 
 
   match "/c/:short_id" => "challenges#show", :as => "short"
