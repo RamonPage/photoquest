@@ -2,12 +2,12 @@ class Fixtures
 
   def self.load
     load_model(Quest)
-    load_model(Move)
+    load_model(AnswerMove, "answer_move")
     load_model(Player)
   end
   
-  def self.load_model(klass)
-    from_yaml(klass.to_s.downcase).each { |object| klass.create(object) }
+  def self.load_model(klass, filename = klass.to_s.downcase)
+    from_yaml(filename).each { |object| klass.create(object) }
   end
   
   def self.reload

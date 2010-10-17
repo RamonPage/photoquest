@@ -3,7 +3,7 @@ class Player < CouchRest::Model::Base
 
   def answered_quests
     self.moves.collect do |move|
-      move.quest
+      move.quest if move.respond_to?(:quest)
     end 
   end 
 end 

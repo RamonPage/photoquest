@@ -10,14 +10,16 @@ class ChallengesController < ApplicationController
     Quest.create params[:quest]
     @quest = Quest.first
     fetch_current_player
+    @player.moves << SharingMove.create
+    @player.save
     @score = Score.new(@player).calculate
   end
   
   def move
-    @move = Move.create :quest_id => params[:id], :answer => params[:answer]
+    @move = AnswerMove.create :quest_id => params[:id], :answer => params[:answer]
     @player.moves << @move
     @player.save
-    if @move.correct?
+    if @move.correct_answer?
       flash[:notice] = "You are correct!" 
     else  
       flash[:alert] = "You lose!"

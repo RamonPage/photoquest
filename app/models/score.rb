@@ -5,7 +5,7 @@ class Score
   end
   
   def calculate
-    @player.moves.select { |move| move.correct? }.count * 1000
+    @player.moves.map(&:earned_points).sum
   end
   
 end
