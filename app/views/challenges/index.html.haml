@@ -19,6 +19,7 @@
   - else
     = render :partial => "blank_state"
 
-  %h2 Send a photo and earn 500 points
-  = render :partial => 'form'
+  #content-extra
+    %h2 Send a photo and earn 500 points
+    = render :partial => 'form'
   = render :partial => 'sidebar' if @score

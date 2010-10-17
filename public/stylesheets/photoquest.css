@@ -222,6 +222,7 @@ Sidebar
 #sidebar #last-move li {
 	padding: 4px 0;
 	font-size: 1.2em;
+	border-bottom: 1px dotted #696969;
 }
 
 #sidebar #last-move li.correct {
@@ -246,6 +247,10 @@ Content
   font-size: 1.2em;
 	text-align: center;
 	clear: both;
+}
+
+#content-extra {
+	display: none;
 }
 
 #content #picture {
