@@ -29,7 +29,7 @@ describe Player do
     it "should return the quest saved" do
       @player.create_quest(@params).should be_eql(mock_quest)  
     end 
-    it "should record player twitters credentials" 
+
   end 
 
   describe "retrieving the last move done by this player" do
