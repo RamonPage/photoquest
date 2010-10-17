@@ -17,6 +17,7 @@ class ChallengesController < ApplicationController
     else
       fetch_current_player
       fetch_quest
+      @score = Score.new(@player).calculate
       render :action => :index
     end
   end
