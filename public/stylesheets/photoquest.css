@@ -34,12 +34,12 @@ body {
 }
 
 #message.success {
-	background: #fff url("/images/tick.png") no-repeat 14px 6px;
+	background: #fff url("/images/tick.png?12345") no-repeat 14px 6px;
 	color: #1B676B;
 }
 
 #message.fail {
-	background: #fff url("/images/error.png") no-repeat 14px 6px;
+	background: #fff url("/images/error.png?12345") no-repeat 14px 6px;
 	color: #E08E79;
 }
 
@@ -52,10 +52,10 @@ body {
 
 #railsrumble a {
 	display: block;
-	width: 128px;
-	height: 127px;
+	width: 100px;
+	height: 99px;
 	border: none;
-	background: transparent url("/images/railsrumble.png") no-repeat 0 0;
+	background: transparent url("/images/railsrumble.png?12345") no-repeat 0 0;
 	text-indent: -9999px;
 }
 
@@ -138,6 +138,13 @@ h4 {
 	color: #036564;
 }
 
+#sidebar h4 {
+	color: #fff;
+	text-shadow: none;
+	margin: 1em 0 .4em 0;
+	border-bottom: 2px solid #fff;
+}
+
 /*
 Header
 */
@@ -149,6 +156,7 @@ Header
 #header #logo a {
 	display: block;
 	height: 86px;
+	margin: 0;
 	padding: 0 0 0 330px;
 	line-height: 3.4em;
 	background: transparent url("/images/photoquest-logo.png?1") no-repeat 0 0;
@@ -217,6 +225,11 @@ Sidebar
 #sidebar #send-quest a {
 	color: #fff;
 	text-shadow: none;
+}
+
+#sidebar #last-move {
+	padding: 0 0 1px 0;
+	border-bottom: 2px solid #fff;
 }
 
 #sidebar #last-move li {
@@ -313,6 +326,7 @@ ul#possible_answers li {
 	margin: 0 auto;
 	padding: 0;
 	text-align: left;
+	position: relative;
 }
 
 .simple_form .hint {
@@ -323,6 +337,20 @@ ul#possible_answers li {
 	font-size: .9em;
 	color: #696969;
 	margin: 2px 36px 8px 0;
+}
+
+.simple_form .error {
+	position: absolute;
+	width: 140px;
+	font-size: .8em;
+	background-color: #E08E79;
+	margin: -70px 0 0 500px;
+	padding: 4px 8px;
+	-webkit-border-radius: .4em; 
+	-moz-border-radius: .4em;
+	border-radius: .4em;
+	color: #fff;
+	text-transform: uppercase;
 }
 
 .simple_form div {
@@ -418,9 +446,17 @@ ul#possible_answers li {
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff');	
 }
 
-.simple_form input[type="submit"] {
-	float: right;
+.simple_form #action {
 	margin: 10px 30px 0 0;
+	text-align: right;
+}
+
+.simple_form #action a {
+	font-size: 1.2em;
+}
+
+.simple_form input[type="submit"] {
+	vertical-align: middle;
 }
 
 /*

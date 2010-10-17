@@ -10,6 +10,7 @@
 - id: quest2
   image_url: http://farm4.static.flickr.com/3047/2463536032_c39ff57b62_o.jpg
   page_where_image_is: http://www.flickr.com/photos/viniciusteles/2463536032/in/set-72157604872130657/
+  twitter_screen_name: rafaeldx7  
   correct_answer: London
   incorrect_answer1: Orlando
   incorrect_answer2: San Francisco
@@ -18,6 +19,7 @@
 - id: quest3
   image_url: http://farm4.static.flickr.com/3658/4080607831_cdbe797c21_o.jpg
   page_where_image_is: http://www.flickr.com/photos/viniciusteles/2462704623/in/set-72157604872130657/
+  twitter_screen_name: rafaeldx7  
   correct_answer: Zurich
   incorrect_answer1: Rio
   incorrect_answer2: Brussels
@@ -27,6 +29,7 @@
 - id: quest4
   image_url: http://farm3.static.flickr.com/2401/2460450782_04b0698984_o.jpg
   page_where_image_is: http://www.flickr.com/photos/viniciusteles/2460450782/in/set-72157604847089076/
+  twitter_screen_name: rafaeldx7  
   correct_answer: Windsor
   incorrect_answer1: Waterloo
   incorrect_answer2: London

@@ -1,5 +1,10 @@
 Rr10Team114::Application.routes.draw do
 
+  get "rankings/index" , :as => "rankings" 
+  get "rankings/create"
+
+  get "homes/index", :as => "home" 
+
   match "/abuses/create/:id" => "abuses#create" , :via => :post , :as => "abuses" 
 
   match "/c/:short_id" => "challenges#show", :as => "short"
@@ -15,7 +20,7 @@ Rr10Team114::Application.routes.draw do
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
-  match 'c/:id' => 'challenges#show'
+  #   match 'c/:id' => 'challenges#show'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:

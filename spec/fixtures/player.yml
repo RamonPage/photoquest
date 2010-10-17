@@ -1,23 +1,28 @@
 - id: player1
+  nick_name: player1
   move_ids:
     - move1
     - move2
 
 - id: player2
+  nick_name: player2
   move_ids:
     - move3
 
 - id: player3
+  nick_name: player3
   move_ids:
     - move3
 
 - id: player4
+  nick_name: player4
   move_ids:
     - move1
     - move2
     - move3
 
 - id: player5
+  nick_name: player5
   move_ids:
     - move1
     - move2

@@ -3,8 +3,9 @@
 class Player < CouchRest::Model::Base
   collection_of :moves
   property :last_move_id, String
+  property :nick_name, String
   
-  SCORE_MAP = <<MAP
+  SCORE_MAP_FUNCTION = <<MAP
     function(doc) {
       if (doc['couchrest-type'].match(/.*Move$/)) {
         if (doc['player_id'] != null) {
@@ -14,7 +15,17 @@ class Player < CouchRest::Model::Base
     }
 MAP
 
-  SCORE_REDUCE = <<REDUCE
+  RANKING_MAP_FUNCTION = <<MAP
+    function(doc) {
+      if (doc['couchrest-type'].match(/.*Move$/)) {
+        if (doc['player_id'] != null) {
+          emit(doc['player_id'], doc.earned_points)
+        }
+      }
+    }
+MAP
+
+  REDUCE_FUNCTION = <<REDUCE
     function(key, values) {
       if (values) {
         return sum(values);
@@ -23,7 +34,8 @@ MAP
     }
 REDUCE
 
-  view_by :score, :map => SCORE_MAP, :reduce => SCORE_REDUCE
+  view_by :score, :map => SCORE_MAP_FUNCTION, :reduce => REDUCE_FUNCTION
+  view_by :ranking, :map => RANKING_MAP_FUNCTION, :reduce => REDUCE_FUNCTION
 
   def create_quest(params)
     @quest = Quest.create(params)
@@ -72,6 +84,11 @@ REDUCE
     result = Player.by_score :key => self.id, :reduce => true
     return result["rows"].first["value"] if result["rows"] && result["rows"].first && result["rows"].first["value"]
     0
+  end
+  
+  def player_ranking
+    result = Player.by_score :reduce => true, :group => true, :limit => 20, :descending => true
+    ranking = result['rows']
   end
   
   def last_answers
