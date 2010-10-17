@@ -8,15 +8,14 @@ class ChallengesController < ApplicationController
   end
 
   def create
-    @new_quest = Quest.create params[:quest]
-    if @new_quest.valid?
-      @quest = @new_quest
+    @quest = Quest.create params[:quest]
+    if @quest.valid?
       @player.create_sharing_move
       @score = Score.new(@player).calculate
     else
-      fetch_quest
-      @score = Score.new(@player).calculate
-      render :action => :index
+      flash[:error] = "Ops, there was no possible to record your quest."
+
+      redirect_to challenges_path
     end
   end
   

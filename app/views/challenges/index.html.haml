@@ -12,12 +12,12 @@
       %ul#possible_answers
         - @quest.answers.each do |answer|
           %li= button_to(answer, :action => :move, :id => @quest.id, :answer => answer)
-    - else
-      = render :partial => "blank_state" 
 
 - content_for :content do
   - if @quest
-    = render :partial => "challenges/pictures", :locals => { :quest => @quest }
+    = render :partial => "pictures", :locals => { :quest => @quest }
+  - else
+    = render :partial => "blank_state"
 
   %h2 Send a photo and earn 500 points
   
@@ -28,5 +28,5 @@
       #sidebar
         %h3 Score
         #score= @score
-        
+
         %p#send-quest= link_to "Send a photo and earn 500 points!", "#new_quest"
