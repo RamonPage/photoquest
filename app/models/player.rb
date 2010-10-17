@@ -86,8 +86,8 @@ REDUCE
     0
   end
   
-  def player_ranking
-    result = Player.by_score :reduce => true, :group => true, :limit => 20, :descending => true
+  def ranking
+    result = Player.by_ranking :reduce => true, :group => true, :limit => 20, :descending => true
     ranking = result['rows']
   end
   
