@@ -2,6 +2,8 @@ Rr10Team114::Application.routes.draw do
 
   match "/abuses/create/:id" => "abuses#create" , :via => :post , :as => "abuses" 
 
+  match "/c/:short_id" => "challenges#show", :as => "short"
+
   resources :challenges do
     member do
       post 'move'

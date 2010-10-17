@@ -65,6 +65,7 @@ GEM
     crack (0.1.8)
     culerity (0.2.12)
     diff-lcs (1.1.2)
+    digest-crc (0.1.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     ffi (0.6.3)
@@ -160,6 +161,7 @@ DEPENDENCIES
   capybara
   configloader (~> 0.2.2)
   couchrest_model!
+  digest-crc
   haml (~> 3.0.21)
   haml-rails (~> 0.2)
   inploy

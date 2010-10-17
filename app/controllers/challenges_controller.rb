@@ -10,7 +10,7 @@ class ChallengesController < ApplicationController
   def create
     @new_quest = Quest.create params[:quest]
     if @new_quest.valid?
-      @quest = Quest.first
+      @quest = @new_quest
       @player.create_sharing_move
       @score = Score.new(@player).calculate
     else
@@ -32,8 +32,9 @@ class ChallengesController < ApplicationController
   end
 
   def show
-    @quest = Quest.get params[:id]
+    @quest = Quest.get(params[:id]) || Quest.find_by_short_id(params[:short_id])
     @score = Score.new(@player).calculate
+    @new_quest = Quest.new
     render :action => :index
   end
 

@@ -16,6 +16,7 @@ gem "arrayextension"
 gem "simple_form"
 gem 'newrelic_rpm'
 gem 'twitter'
+gem 'digest-crc'
 
 group :test, :development do
   gem 'steak', '>= 1.0.0.rc.1'

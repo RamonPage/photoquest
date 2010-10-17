@@ -8,13 +8,16 @@ class Quest < CouchRest::Model::Base
   property :twitter_image_url, String
   property :correct_answer, String
   property :incorrect_answers, [String]
+  property :short_id, String
 
   property :abuses_reported, Integer, :default => 0 
+  
+  view_by :short_id
 
-  validates_presence_of :image_url, :page_where_image_is, :correct_answer, :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4
+  # validates_presence_of :image_url, :page_where_image_is, :correct_answer, :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4
   
   before_create :adapt_incorrect_answers
-  
+  after_create :create_short_id
 
   def mark_as_abuse!(player)
     self.abuses_reported = self.abuses_reported + 1
@@ -44,6 +47,18 @@ class Quest < CouchRest::Model::Base
     ([correct_answer] + incorrect_answers).shuffle
   end
   
+  def create_short_id
+    result = nil
+    candidate = Digest::CRC32.hexdigest self.id
+    if Quest.find_by_short_id(candidate)
+      result = self.id
+    else
+      result = candidate
+    end
+    self.short_id = result
+    save
+  end
+  
   def twitter_image_url
     # if read_attribute('twitter_image_url').blank?
     #       if twitter_screen_name.present?
@@ -53,6 +68,7 @@ class Quest < CouchRest::Model::Base
     #             oauth.authorize_from_access TWITTER_KEYS["access_token"], TWITTER_KEYS["access_token_secret"]    
     #             client = Twitter::Base.new(oauth)
     #             write_attribute('twitter_image_url', client.user(twitter_screen_name).profile_image_url)
+    #            self.save
     #           }
     #         rescue
     #         end
