@@ -34,16 +34,6 @@ class Quest < CouchRest::Model::Base
   }
 MAP
 
-  QUEST_FOR_PLAYER_MAP_FUNCTION = <<MAP
-  function(doc) {
-    if (doc['couchrest-type'] == 'Quest') {
-      if (doc.abuses_reported < 3) {
-        emit(doc, doc._id);
-      }
-    }
-  }
-MAP
-
   REDUCE_FUNCTION = <<REDUCE
   function(key, values) {
     if (values) {
@@ -54,7 +44,6 @@ MAP
 REDUCE
   
   view_by :all_valid, :map => ALL_VALID_MAP_FUNCTION, :reduce => REDUCE_FUNCTION
-  view_by :all_quests_for_player, :map => QUEST_FOR_PLAYER_MAP_FUNCTION
   
   view_by :abuses_reported
 
