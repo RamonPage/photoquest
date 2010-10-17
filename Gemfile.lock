@@ -88,6 +88,7 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
+    newrelic_rpm (2.13.2)
     nokogiri (1.4.3.1)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -155,6 +156,7 @@ DEPENDENCIES
   json (~> 1.4.6)
   json_pure (~> 1.4.6)
   launchy
+  newrelic_rpm
   rails (= 3.0.1)
   rspec-rails (>= 2.0.0.beta.22)
   simple_form
