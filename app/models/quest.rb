@@ -34,6 +34,16 @@ class Quest < CouchRest::Model::Base
   }
 MAP
 
+  QUEST_FOR_PLAYER_MAP_FUNCTION = <<MAP
+  function(doc) {
+    if (doc['couchrest-type'] == 'Quest') {
+      if (doc.abuses_reported < 3) {
+        emit(doc, doc._id);
+      }
+    }
+  }
+MAP
+
   REDUCE_FUNCTION = <<REDUCE
   function(key, values) {
     if (values) {
@@ -44,6 +54,7 @@ MAP
 REDUCE
   
   view_by :all_valid, :map => ALL_VALID_MAP_FUNCTION, :reduce => REDUCE_FUNCTION
+  view_by :all_quests_for_player, :map => QUEST_FOR_PLAYER_MAP_FUNCTION
   
   view_by :abuses_reported
 
@@ -59,7 +70,7 @@ REDUCE
 
   def self.find_quest_for(player)
     return draw if player.nil? || player.answered_quests.blank?
-    new_quests = all - player.answered_quests
+    new_quests = Quest.by_all_valid - player.answered_quests
     new_quests.draw.first 
   end 
   
@@ -70,10 +81,6 @@ REDUCE
     nil
   end
   
-  def self.first
-    Quest.all.first
-  end
-
   def answers
     ([correct_answer] + incorrect_answers).shuffle
   end
