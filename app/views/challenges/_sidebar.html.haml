@@ -4,10 +4,7 @@
     #score= @score
     
     %ul#last-move
-      %li.win.correct London
-      %li.correct Moscou
-      %li.incorrect Lisboa
-      %li Paris
-      %li Hamburg
+      - @player.last_answers.each do |answer|
+        = li_for(answer)
     
     %p#send-quest= link_to "Send a photo and earn 500 points!", "#new_quest"

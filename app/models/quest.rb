@@ -14,7 +14,7 @@ class Quest < CouchRest::Model::Base
   
   view_by :short_id
 
-  # validates_presence_of :image_url, :page_where_image_is, :correct_answer, :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4
+  validates_presence_of :image_url, :page_where_image_is, :correct_answer, :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4
   
   before_create :adapt_incorrect_answers
   after_create :create_short_id

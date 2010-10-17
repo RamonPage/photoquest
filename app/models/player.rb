@@ -1,6 +1,8 @@
+# encoding: utf-8
+
 class Player < CouchRest::Model::Base
   collection_of :moves
-  property :last_move , PastMove
+  property :last_move , AnswerMove
 
   def answered_quests
     self.moves.collect do |move|
@@ -24,7 +26,7 @@ class Player < CouchRest::Model::Base
   def create_answer_move(params={})
     @move = AnswerMove.create(params)
     self.moves << @move
-    self.last_move = PastMove.new(@move) 
+    self.last_move = @move
     self.save
 
     @move 
@@ -37,4 +39,14 @@ class Player < CouchRest::Model::Base
 
     @move 
   end 
+  
+  def last_answers
+    [
+      { :answer => "London", :chosen => "London", :correct => "London" },
+      { :answer => "Rio", :chosen => "London", :correct => "London" },
+      { :answer => "Madrid", :chosen => "London", :correct => "London" },
+      { :answer => "Paris", :chosen => "Paris", :correct => "London" },
+      { :answer => "São Paulo", :chosen => "London", :correct => "São Paulo" },
+    ]
+  end
 end 
