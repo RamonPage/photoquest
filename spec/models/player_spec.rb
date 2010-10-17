@@ -12,6 +12,8 @@ describe Player do
     player.answered_quests.should_not include(fetch_quest_from_move('move3'))
   end
 
+  
+
   describe "creation of a new move" do
 
     before do
@@ -31,6 +33,16 @@ describe Player do
       @move.id.should_not be_nil
       @move.quest_id.should_not be_nil
       @move.answer.should  == 'Portland' 
+    end
+
+    context "when it is a abusive move" do
+
+      it "should save this user" do
+        @player.should_receive(:save)
+        @player.create_abusive_move(mock_quest) 
+      end
+
+      it { proc { @player.create_abusive_move(mock_quest) }.should change(@player.moves, :size).by(1) }
     end 
   end 
 end

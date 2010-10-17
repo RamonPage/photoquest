@@ -1,4 +1,7 @@
 #picture
+  %p#report-abuse
+    = button_to "Report abuse" , abuses_path(quest) 
+        
   = image_tag(quest.image_url, :alt => "Photo #{quest.id}")
   - if quest.twitter_screen_name
     #author

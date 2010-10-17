@@ -36,21 +36,6 @@ class ChallengesController < ApplicationController
   end
 
   private
-  
-  def fetch_current_player
-    if session[:player_id] 
-      @player = Player.get session[:player_id] 
-      create_new_session if @player.nil?
-    else
-      create_new_session
-    end
-  end 
-  
-  def create_new_session
-    @player = Player.create
-    session[:player_id] = @player.id
-  end
-  
   def fetch_quest
     @quest = Quest.find_quest_for(@player)
   end

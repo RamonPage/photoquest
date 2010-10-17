@@ -1,5 +1,7 @@
 Rr10Team114::Application.routes.draw do
 
+  match "/abuses/create/:id" => "abuses#create" , :via => :post , :as => "abuses" 
+
   resources :challenges do
     member do
       post 'move'

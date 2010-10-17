@@ -74,6 +74,20 @@ describe Quest do
       player.answered_quests.should_not include(Quest.find_quest_for(player))
       Quest.find_quest_for(player).should be_a(Quest) 
     end 
+  end
+
+  describe "marking a quest as abusive" do
+    before do
+      @quest = Quest.create
+    end      
+
+    it "should create a abusive move for the given player" do
+      mock_player.should_receive(:create_abusive_move).with(@quest) 
+      @quest.mark_as_abuse!(mock_player)
+    end
+
+    it { proc { @quest.mark_as_abuse!(mock_player) }.should change(@quest, :abuses_reported).by(1) }
+    
   end 
   
 end

@@ -15,7 +15,9 @@ end
 def mock_move(stubs={})
   @mock_move ||= mock_model(Move,stubs).as_null_object 
 end
-
+def mock_quest(stubs={})
+  @mock_quest ||= mock_model(Quest, stubs).as_null_object 
+end 
 
 
 RSpec.configure do |config|

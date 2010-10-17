@@ -13,5 +13,13 @@ class Player < CouchRest::Model::Base
     self.save
 
     @move 
+  end
+
+  def create_abusive_move(quest)
+    @move = AbusiveMove.create(:quest => quest)
+    self.moves << @move
+    self.save
+
+    @move 
   end 
 end 

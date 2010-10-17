@@ -1,4 +1,4 @@
-class Quest < CouchRest::Model::Base
+class Quest < CouchRest::Model::Base 
   
   attr_accessor :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4
 
@@ -8,9 +8,17 @@ class Quest < CouchRest::Model::Base
   property :twitter_image_url, String
   property :correct_answer, String
   property :incorrect_answers, [String]
-  
+  property :abuses_reported, Integer, :default => 0 
+
   before_create :adapt_incorrect_answers
   before_create :fetch_twitter_image
+  
+
+  def mark_as_abuse!(player)
+    self.abuses_reported = self.abuses_reported + 1
+    self.save
+    player.create_abusive_move(self) 
+  end
   
   def correct_answer?(answer)
     self.correct_answer == answer
