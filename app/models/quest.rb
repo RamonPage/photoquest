@@ -24,9 +24,9 @@ class Quest < CouchRest::Model::Base
   after_create :create_short_id
   after_create :set_twitter_image_url
 
-  def mark_as_abuse!(player)
-    self.write_attribute(:abuses_reported, self.abuses_reported + 1) 
 
+  def mark_as_abuse!(player)
+    self.abuses_reported = self.abuses_reported + 1 
     self.save
     player.create_abusive_move(self) 
   end
@@ -42,7 +42,7 @@ class Quest < CouchRest::Model::Base
   end 
   
   def self.draw
-    Quest.all.draw.first
+    Quest.all.select { |quest| quest.abuses_reported <= 3 }.draw.first
   end
   
   def self.first
