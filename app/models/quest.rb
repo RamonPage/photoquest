@@ -22,6 +22,27 @@ class Quest < CouchRest::Model::Base
   after_create :create_short_id
   after_create :set_twitter_image_url
   
+  ALL_VALID_MAP_FUNCTION = <<MAP
+  function(doc) {
+    if (doc['couchrest-type'] == 'Quest') {
+      if (doc.abuses_reported < 3) {
+        emit(doc, doc._id);
+      }
+    }
+  }
+MAP
+
+  REDUCE_FUNCTION = <<REDUCE
+  function(key, values) {
+    if (values) {
+      return values[Math.floor(Math.random()*values.length)];
+    }
+    return null;  
+  }
+REDUCE
+  
+  view_by :all_valid, :map => ALL_VALID_MAP_FUNCTION, :reduce => REDUCE_FUNCTION
+  
   view_by :abuses_reported
 
   def mark_as_abuse!(player)
@@ -41,7 +62,10 @@ class Quest < CouchRest::Model::Base
   end 
   
   def self.draw
-    Quest.all.select { |quest| quest.abuses_reported <= 3 }.draw.first
+    result = Quest.by_all_valid(:reduce => true)
+    quest_id = result["rows"].first["value"] if result && result["rows"] && result["rows"].first && result["rows"].first["value"]
+    return Quest.get(quest_id) if quest_id
+    nil
   end
   
   def self.first
