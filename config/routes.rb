@@ -1,5 +1,7 @@
 Rr10Team114::Application.routes.draw do
 
+  get "homes/index", :as => "home" 
+
   match "/abuses/create/:id" => "abuses#create" , :via => :post , :as => "abuses" 
 
   match "/c/:short_id" => "challenges#show", :as => "short"
