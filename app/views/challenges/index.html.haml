@@ -12,12 +12,7 @@
       %li= button_to(answer, :action => :move, :id => @quest.id, :answer => answer)
 
 - content_for :content do
-  #picture
-    = image_tag(@quest.image_url)
-    %br
-    = image_tag(@quest.twitter_image_url) if @quest.twitter_image_url
-    &nbsp;
-    = link_to "@#{@quest.twitter_screen_name}", "http://twitter.com/#{@quest.twitter_screen_name}"
+  = render :partial => "challenges/pictures", :locals => { :quest => @quest }
 
   %h2 Send a photo and earn 500 points
   
