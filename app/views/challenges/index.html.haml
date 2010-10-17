@@ -20,13 +20,5 @@
     = render :partial => "blank_state"
 
   %h2 Send a photo and earn 500 points
-  
   = render :partial => 'form'
-
-  - if @score
-    - content_for :sidebar do
-      #sidebar
-        %h3 Score
-        #score= @score
-
-        %p#send-quest= link_to "Send a photo and earn 500 points!", "#new_quest"
+  = render :partial => 'sidebar' if @score

@@ -1,0 +1,6 @@
+- content_for :sidebar do
+  #sidebar
+    %h3 Score
+    #score= @score
+
+    %p#send-quest= link_to "Send a photo and earn 500 points!", "#new_quest"
