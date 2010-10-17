@@ -113,7 +113,7 @@ REDUCE
         nick_name = local_row["key"][1] if local_row["key"].size == 2
         score = local_row["value"] if local_row["key"].size < 2
       end
-      { :nick_name => nick_name, :score => score }
+      { :id => key, :nick_name => nick_name, :score => score }
     end.uniq
   end
   
