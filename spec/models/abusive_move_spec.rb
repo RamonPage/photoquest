@@ -1,5 +1,9 @@
-describe AbusiveMove do
+# encoding: utf-8
 
+require 'spec_helper'
+
+
+describe AbusiveMove do
 
   it "should value 0 points " do
     am  = AbusiveMove.new
