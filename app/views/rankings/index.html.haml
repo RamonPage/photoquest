@@ -14,14 +14,13 @@
   #picture
     %h2
       Rank
+    - if @new_player 
+      %div#me
+        = simple_form_for @new_player, :url => rankings_path do |f|
+          = f.input :nick_name, :label => "Your nickname"
+          = f.submit :add
     
     %ol#rank
-      - if @new_player 
-        %li{ :class => "me" }
-          %div.player
-            = simple_form_for @new_player, :url => rankings_path do |f|
-              = f.input :nick_name, :label => "Your nickname"
-              = f.submit :add
  
       - @ranking.each do |p|
         %li{ :class => p[:id] == session[:player_id] ? "me" : nil }

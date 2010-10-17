@@ -341,20 +341,21 @@ ol#rank li.me {
 	background-color: #dbd4bd;
 }
 
-ol#rank li .simple_form {
+#me .simple_form {
+   padding-bottom: 5em; 
 	width: 460px;
 }
 
-ol#rank li .simple_form label {
+#me .simple_form label {
 	text-align: left;
 	width: 100px;
 }
 
-ol#rank li .simple_form input.string {
+#me .simple_form input.string {
 	width: 260px;
 }
 
-ol#rank li .simple_form input[type="submit"] {
+#me .simple_form input[type="submit"] {
 	float: right;
 }
 
