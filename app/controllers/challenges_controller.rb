@@ -5,7 +5,8 @@ class ChallengesController < ApplicationController
   def index
     @score = Score.new(@player).calculate if @player.moves.present?
   end
-  
+
+  # TODO: refactor move the sharing move create inside the Quest.create(player, params[:quest]) 
   def create
     Quest.create params[:quest]
     @quest = Quest.first
