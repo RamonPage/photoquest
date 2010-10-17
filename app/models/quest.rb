@@ -3,7 +3,6 @@ class Quest < CouchRest::Model::Base
   attr_accessor :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4
   
   property :image_url, String
-  property :page_where_image_is, String
   property :twitter_screen_name, String
   property :twitter_image_url, String
   property :correct_answer, String
@@ -13,7 +12,7 @@ class Quest < CouchRest::Model::Base
   property :abuses_reported, Integer, :default => 0 
   
   view_by :short_id
-  validates_format_of :image_url, :page_where_image_is, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+  validates_format_of :image_url, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
   validates_format_of :twitter_screen_name, :with => /^[@a-zA-Z0-9_-]{0,40}$/ix
   validates_presence_of :correct_answer, :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4
 
@@ -22,10 +21,12 @@ class Quest < CouchRest::Model::Base
   before_create :remove_arroba
   after_create :create_short_id
   after_create :set_twitter_image_url
+  
+  view_by :abuses_reported
 
   def mark_as_abuse!(player)
-    self.abuses_reported = self.abuses_reported + 1
-    self.save
+    write_attribute(:abuses_reported, read_attribute(:abuses_reported) + 1)
+    save
     player.create_abusive_move(self) 
   end
   
@@ -40,7 +41,7 @@ class Quest < CouchRest::Model::Base
   end 
   
   def self.draw
-    Quest.all.draw.first
+    Quest.all.select { |quest| quest.abuses_reported <= 3 }.draw.first
   end
   
   def self.first
