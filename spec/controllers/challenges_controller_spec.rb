@@ -36,10 +36,17 @@ describe ChallengesController do
   end
   
   describe "POST move" do
-    it "should return a move with incorrect answer" do
-      post :move, :id => "quest1", :answer => "Portland"
-      assigns(:move).correct?.should be_false
+    before do
+      session[:player_id] = "1234"
+      Player.stub!(:get).with("1234").and_return(mock_player) 
     end
+    
+    it "should create a move for this player" do 
+      mock_player.should_receive(:create_new_move).with(:quest_id => 'quest1', :answer => 'Portland').and_return(mock_move)
+      post :move, :id => "quest1" , :answer => "Portland"
+      assigns[:move].should be_eql(mock_move)
+    end 
+    
 
     context "with a correct answer" do 
       before :each do
