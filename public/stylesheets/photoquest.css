@@ -52,7 +52,7 @@ body {
 	border-bottom-right-radius: 4px;
 }
 
-#message.correct {
+#message.success {
 	background: #fff url("/images/tick.png") no-repeat 14px 6px;
 	color: #1B676B;
 }
@@ -164,6 +164,24 @@ Header
 	clear: both;
 }
 
+#header #challenge #options li {
+	width: 300px;
+	float: left;
+	text-align: center;
+}
+
+#header #challenge #options li a {
+	font-size: 1.4em;
+}
+
+#header #challenge #options li a#play {
+	font-family: "Times New Roman", Times, Georgia, Serif;
+	font-size: 6em;
+	line-height: 0;
+	border: none;
+	margin: 0;
+}
+
 /*
 Sidebar
 */
@@ -231,6 +249,7 @@ Content
 	background-color: #fff;
 	padding: 4px;
 	border: 2px solid #ECE5CE;
+	max-width: 800px;
 }
 
 ul#possible_answers li {
@@ -279,14 +298,14 @@ ul#possible_answers li {
 	border-color: #C5E0DC;
 }
 
-.simple_form #quest_adapter_correct_answer {
+.simple_form #quest_correct_answer {
 	color: #1B676B;
 }
 
-.simple_form #quest_adapter_incorrect_answer1,
-.simple_form #quest_adapter_incorrect_answer2,
-.simple_form #quest_adapter_incorrect_answer3,
-.simple_form #quest_adapter_incorrect_answer4 {
+.simple_form #quest_incorrect_answer1,
+.simple_form #quest_incorrect_answer2,
+.simple_form #quest_incorrect_answer3,
+.simple_form #quest_incorrect_answer4 {
 	color: #E08E79;
 }
 

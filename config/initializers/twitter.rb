@@ -1,0 +1,1 @@
+TWITTER_KEYS = YAML::load(File.read(File.join(ENV['HOME'], '.twitter')))

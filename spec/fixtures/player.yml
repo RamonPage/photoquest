@@ -9,6 +9,21 @@
 
 - id: player3
   move_ids:
+    - move3
+
+- id: player4
+  move_ids:
+    - move1
+    - move2
+    - move3
+
+- id: player5
+  move_ids:
+    - move1
+    - move2
+    - move3
     - move4
+    
+    
 
     

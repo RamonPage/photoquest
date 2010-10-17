@@ -10,3 +10,7 @@
   quest_id: quest3
   answer: Orlando
 
+- id: move4
+  quest_id: quest4
+  answer: Zurich
+

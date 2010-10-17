@@ -57,7 +57,7 @@ describe ChallengesController do
       end
     
       it "should redirect to the index page" do
-        response.should render_template(:index)
+        response.should redirect_to challenges_url 
       end   
     end 
   end

@@ -1,23 +1,38 @@
 class ChallengesController < ApplicationController
-  before_filter :fetch_quest, :except => ['create']
   before_filter :fetch_current_player, :except => ['create']
+  before_filter :fetch_quest, :except => ['create']
+
+  def index
+    @score = Score.new(@player).calculate if @player.moves.present?
+  end
   
   def create
     Quest.create params[:quest]
+    @quest = Quest.first
+    fetch_current_player
+    @score = Score.new(@player).calculate
   end
   
   def move
     @move = @player.create_new_move :quest_id => params[:id], :answer => params[:answer]
+    if @move.correct?
+      flash[:notice] = "You are correct!" 
+    else  
+      flash[:alert] = "You lose!"
+    end
+      
+    redirect_to challenges_path
+  end
+  
+  def show
+    @quest = Quest.get params[:id]
+    fetch_current_player
+
     @score = Score.new(@player).calculate
     render :action => :index
   end
-  
+
   private
-  
-  def correct
-    quest = Quest.get params[:id]
-    quest.correct_answer?(params[:answer])
-  end
   
   def fetch_current_player
     if session[:player_id] 
@@ -34,6 +49,6 @@ class ChallengesController < ApplicationController
   end
   
   def fetch_quest
-    @quest = Quest.draw
+    @quest = Quest.find_quest_for(@player)
   end
 end
