@@ -8,6 +8,10 @@ class Player < CouchRest::Model::Base
     end 
   end
 
+  def quest_from_last_move
+    Quest.get(self.last_move[:quest_id]) if self.last_move.present? 
+  end 
+
   def create_sharing_move
     self.moves << SharingMove.create
     self.save
