@@ -321,6 +321,41 @@ ul#possible_answers li {
 	float: left;
 }
 
+ol#rank {
+	text-align: left;
+	margin: 0 40px 0 80px;
+	font-size: 1.6em;
+	border-top: 1px solid #ECE5CE;
+	border-bottom: 1px solid #fff;
+}
+
+ol#rank li {
+	padding: 20px;
+	height: 30px;
+	clear: left;
+	border-bottom: 1px solid #ECE5CE;
+	border-top: 1px solid #fff;
+}
+
+ol#rank li.me {
+	background-color: #dbd4bd;
+}
+
+ol#rank li h3 {
+	margin: -10px 0 0 0;
+	font-family: Helvetica,Arial,sans-serif;
+	float: left;
+	width: 160px;
+	vertical-align: middle;
+}
+
+ol#rank li .player {
+	margin: 0;
+	float: left;
+	font-size: .8em;
+	vertical-align: middle;
+}
+
 .simple_form {
 	width: 600px;
 	margin: 0 auto;
