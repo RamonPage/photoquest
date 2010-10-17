@@ -4,7 +4,6 @@ class Player < CouchRest::Model::Base
   collection_of :moves
   property :last_move_id, String
 
-
   def create_quest(params)
     @quest = Quest.create(params)
     self.create_sharing_move
@@ -26,12 +25,12 @@ class Player < CouchRest::Model::Base
   end 
 
   def create_sharing_move
-    self.moves << SharingMove.create
+    self.moves << SharingMove.create(:player => self)
     self.save
   end
 
   def create_answer_move(params={})
-    @move = AnswerMove.create(params)
+    @move = AnswerMove.create(params.merge(:player => self))
     self.moves << @move
     self.last_move_id = @move.id
     self.save
@@ -40,7 +39,7 @@ class Player < CouchRest::Model::Base
   end
 
   def create_abusive_move(quest)
-    @move = AbusiveMove.create(:quest => quest)
+    @move = AbusiveMove.create(:quest => quest, :player => self)
     self.moves << @move
     self.save
 
