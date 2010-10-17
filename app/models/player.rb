@@ -13,7 +13,7 @@ class Player < CouchRest::Model::Base
   end
 
   def answer_from_last_move
-    self.last_move[:answer]
+    self.last_move[:answer] if self.last_move.present? 
   end 
 
   def create_sharing_move
