@@ -28,6 +28,10 @@ class Quest < CouchRest::Model::Base
     Quest.all.draw.first
   end
   
+  def self.first
+    Quest.all.first
+  end
+
   def answers
     ([correct_answer] + incorrect_answers).shuffle
   end

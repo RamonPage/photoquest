@@ -1,1 +1,22 @@
-Foi
+- content_for :message do
+  %p#message{ :class => "success" }
+    = "Your photo has been sent!"
+
+- content_for :challenge do
+  %ul#options
+    %li
+      %h3 Share with your friends
+      %a{ :href => "#{request.url}" }= request.url
+
+    %li
+      %h3 Continue playin'
+      %a{ :href => "/", :id => "play" } &raquo;
+
+- content_for :content do
+  #picture
+    = image_tag(@quest.image_url)
+
+  - content_for :sidebar do
+    #sidebar
+      %h3 Score
+      #score= @score

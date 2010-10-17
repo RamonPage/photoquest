@@ -4,6 +4,9 @@ class ChallengesController < ApplicationController
   
   def create
     Quest.create params[:quest]
+    @quest = Quest.first
+    fetch_current_player
+    @score = Score.new(@player).calculate
   end
   
   def move

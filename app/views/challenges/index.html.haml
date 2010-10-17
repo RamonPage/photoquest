@@ -1,6 +1,6 @@
 - content_for :message do
   - if @move
-    %p#message{ :class => @move.correct? ? "correct" : "fail" }
+    %p#message{ :class => @move.correct? ? "success" : "fail" }
       = "You are correct!" if @move.correct?
       = "You lose!" unless @move.correct?
 
@@ -32,4 +32,4 @@
         %h3 Score
         #score= @score
         
-        %p#send-quest= link_to "Send a photo and earn 500 points!", "#new_quest_adapter"
+        %p#send-quest= link_to "Send a photo and earn 500 points!", "#new_quest"
