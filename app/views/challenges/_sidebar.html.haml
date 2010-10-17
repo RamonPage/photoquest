@@ -2,5 +2,12 @@
   #sidebar
     %h3 Score
     #score= @score
-
+    
+    %ul#last-move
+      %li.win.correct London
+      %li.correct Moscou
+      %li.incorrect Lisboa
+      %li Paris
+      %li Hamburg
+    
     %p#send-quest= link_to "Send a photo and earn 500 points!", "#new_quest"
