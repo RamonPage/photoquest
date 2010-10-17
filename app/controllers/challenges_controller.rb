@@ -4,14 +4,21 @@ class ChallengesController < ApplicationController
 
   def index
     @score = Score.new(@player).calculate if @player.moves.present?
+    @new_quest = Quest.new
   end
 
   def create
-    Quest.create params[:quest]
-    @quest = Quest.first
-    fetch_current_player
-    @player.create_sharing_move
-    @score = Score.new(@player).calculate
+    @new_quest = Quest.create params[:quest]
+    if @new_quest.valid?
+      @quest = Quest.first
+      fetch_current_player
+      @player.create_sharing_move
+      @score = Score.new(@player).calculate
+    else
+      fetch_current_player
+      fetch_quest
+      render :action => :index
+    end
   end
   
   def move

@@ -9,6 +9,8 @@ class Quest < CouchRest::Model::Base
   property :correct_answer, String
   property :incorrect_answers, [String]
   
+  validates_presence_of :image_url, :page_where_image_is, :correct_answer, :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4
+  
   before_create :adapt_incorrect_answers
   
   def correct_answer?(answer)
