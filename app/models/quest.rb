@@ -4,10 +4,13 @@ class Quest < CouchRest::Model::Base
 
   property :image_url, String
   property :page_where_image_is, String
+  property :twitter_screen_name, String
+  property :twitter_image_url, String
   property :correct_answer, String
   property :incorrect_answers, [String]
   
   before_create :adapt_incorrect_answers
+  before_create :fetch_twitter_image
   
   def correct_answer?(answer)
     self.correct_answer == answer
@@ -29,6 +32,15 @@ class Quest < CouchRest::Model::Base
 
   def answers
     ([correct_answer] + incorrect_answers).shuffle
+  end
+  
+  def fetch_twitter_image
+    if self.twitter_screen_name
+      oauth = Twitter::OAuth.new TWITTER_KEYS["consumer_key"], TWITTER_KEYS["consumer_secret"]
+      oauth.authorize_from_access TWITTER_KEYS["access_token"], TWITTER_KEYS["access_token_secret"]    
+      client = Twitter::Base.new(oauth)
+      self.twitter_image_url = client.user(twitter_screen_name).profile_image_url
+    end
   end
   
   def adapt_incorrect_answers

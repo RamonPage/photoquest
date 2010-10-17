@@ -1,6 +1,7 @@
 - id: quest1
   image_url: http://farm4.static.flickr.com/3081/2558637383_d8a797b758_o.jpg
   page_where_image_is: http://www.flickr.com/photos/viniciusteles/2558637383/in/set-72157605484089896/
+  twitter_screen_name: rafaeldx7  
   correct_answer: Chicago
   incorrect_answers: 
     - Portland 

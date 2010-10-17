@@ -14,6 +14,10 @@
 - content_for :content do
   #picture
     = image_tag(@quest.image_url)
+    %br
+    = image_tag(@quest.twitter_image_url) if @quest.twitter_image_url
+    &nbsp;
+    = link_to "@#{@quest.twitter_screen_name}", "http://twitter.com/#{@quest.twitter_screen_name}"
 
   %h2 Send a photo and earn 500 points
   
@@ -26,6 +30,7 @@
       = f.input :incorrect_answer2, :input_html => { :maxlength => 40 }
       = f.input :incorrect_answer3, :input_html => { :maxlength => 40 }
       = f.input :incorrect_answer4, :input_html => { :maxlength => 40 }
+      = f.input :twitter_screen_name, :input_html => { :maxlength => 40 }
       = f.button :submit
 
   - if @score
