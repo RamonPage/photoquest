@@ -1,5 +1,5 @@
 class ChallengesController < ApplicationController
-  before_filter :fetch_current_player, :except => ['create']
+  before_filter :fetch_current_player
   before_filter :fetch_quest, :except => ['create', 'move']
 
   def index
@@ -11,11 +11,9 @@ class ChallengesController < ApplicationController
     @new_quest = Quest.create params[:quest]
     if @new_quest.valid?
       @quest = Quest.first
-      fetch_current_player
       @player.create_sharing_move
       @score = Score.new(@player).calculate
     else
-      fetch_current_player
       fetch_quest
       @score = Score.new(@player).calculate
       render :action => :index
@@ -29,14 +27,12 @@ class ChallengesController < ApplicationController
     else  
       flash[:alert] = "You lose!"
     end
-      
+
     redirect_to challenges_path
   end
-  
+
   def show
     @quest = Quest.get params[:id]
-    fetch_current_player
-
     @score = Score.new(@player).calculate
     render :action => :index
   end
