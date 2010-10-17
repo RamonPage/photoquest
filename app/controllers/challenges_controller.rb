@@ -1,11 +1,12 @@
 class ChallengesController < ApplicationController
   before_filter :fetch_current_player, :except => ['create']
-  before_filter :fetch_quest, :except => ['create']
+  before_filter :fetch_quest, :except => ['create', 'move']
 
   def index
     @score = Score.new(@player).calculate if @player.moves.present?
   end
-  
+
+  # TODO: refactor move the sharing move create inside the Quest.create(player, params[:quest]) 
   def create
     Quest.create params[:quest]
     @quest = Quest.first

@@ -6,13 +6,18 @@
     %p#message{ :class => "fail" }
       = flash[:alert]
 
-- content_for :challenge do
-  %ul#possible_answers
-    - @quest.answers.each do |answer|
-      %li= button_to(answer, :action => :move, :id => @quest.id, :answer => answer)
+
+  - content_for :challenge do
+    - if @quest
+      %ul#possible_answers
+        - @quest.answers.each do |answer|
+          %li= button_to(answer, :action => :move, :id => @quest.id, :answer => answer)
+    - else
+      = render :partial => "blank_state" 
 
 - content_for :content do
-  = render :partial => "challenges/pictures", :locals => { :quest => @quest }
+  - if @quest
+    = render :partial => "challenges/pictures", :locals => { :quest => @quest }
 
   %h2 Send a photo and earn 500 points
   
