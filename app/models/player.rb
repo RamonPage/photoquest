@@ -100,7 +100,7 @@ REDUCE
   def self.ranking
     rows = Player.by_ranking(:include_docs => false, :reduce => true, :group => true, :include_docs => false, :limit => 100, :descending => true)["rows"]
     keys = rows.map { |r| r["key"].first }
-    people = keys.map do |key|
+    result = people = keys.map do |key|
       local_rows = rows.select { |row| row["key"].first == key }
       nick_name = ''
       score = 0
@@ -110,6 +110,7 @@ REDUCE
       end
       { :id => key, :nick_name => nick_name, :score => score }
     end.uniq
+    result.sort { |a, b| a[:score] <=> b[:score] }.reverse
   end
   
   def last_answers
