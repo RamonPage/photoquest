@@ -3,7 +3,6 @@ class Quest < CouchRest::Model::Base
   attr_accessor :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4
   
   property :image_url, String
-  property :page_where_image_is, String
   property :twitter_screen_name, String
   property :twitter_image_url, String
   property :correct_answer, String
@@ -13,9 +12,11 @@ class Quest < CouchRest::Model::Base
   property :abuses_reported, Integer, :default => 0 
   
   view_by :short_id
-  validates_format_of :image_url, :page_where_image_is, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+  view_by :abuses_reported
+  
+  validates_format_of :image_url, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
   validates_format_of :twitter_screen_name, :with => /^[@a-zA-Z0-9_-]{0,40}$/ix
-  validates_presence_of :correct_answer, :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4
+  validates_presence_of :correct_answer, :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4 , :only => [:create]
 
   before_create :adapt_incorrect_answers
   before_create :strip_quest
@@ -24,7 +25,8 @@ class Quest < CouchRest::Model::Base
   after_create :set_twitter_image_url
 
   def mark_as_abuse!(player)
-    self.abuses_reported = self.abuses_reported + 1
+    self.write_attribute(:abuses_reported, self.abuses_reported + 1) 
+
     self.save
     player.create_abusive_move(self) 
   end
