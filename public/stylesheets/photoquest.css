@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font: .625em Helvetica,Arial,sans-serif;
-  background: #ECE5CE url("/images/bg-body.png?32433245");
+  background: #ECE5CE url("/images/bg-body.png?1234");
   color: #363636;
 }
 
@@ -22,7 +22,7 @@ body {
 	top: 0;
 	left: 0;
 	z-index: 1000;
-	background: transparent url("/images/railsrumble.png?32433245") no-repeat 0 0;
+	background: transparent url("/images/railsrumble.png?1234") no-repeat 0 0;
 	width: 224px;
 	height: 223px;
 	display: none;	
@@ -61,7 +61,6 @@ body {
 	background: #fff url("/images/error.png") no-repeat 14px 6px;
 	color: #E08E79;
 }
-
 
 /*
 General
@@ -235,7 +234,7 @@ Content
 #content #picture {
 	margin: auto;
 	padding: 30px 0;
-	background: transparent url("/images/bg-picture.png?32433245");
+	background: transparent url("/images/bg-picture.png?1234");
 	-webkit-border-radius: .6em; 
 	-moz-border-radius: .6em;
 	border-radius: .6em;
@@ -250,6 +249,36 @@ Content
 	padding: 4px;
 	border: 2px solid #ECE5CE;
 	max-width: 800px;
+}
+
+#content #picture #author {
+	position: relative;
+	height: 26px;
+	margin: -48px auto 0 auto;
+	width: 240px;
+	padding: 6px 12px;
+	background: transparent url("/images/black-overlay.png?1234");
+	font-size: 1.2em;
+}
+
+#content #picture #author span#by {
+	font-style: italic;
+	font-weight: normal;
+	font-size: .7em;
+	color: #fff;
+}
+
+#content #picture #author img {
+	margin: 0 4px;
+	padding: 1px;
+	width: 24px;
+	background-color: #fff;
+	border: none;
+	vertical-align: middle;
+}
+
+#content #picture #author a {
+	color: #fff;
 }
 
 ul#possible_answers li {
