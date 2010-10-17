@@ -1,14 +1,4 @@
-- content_for :message do
-  - if flash[:notice]
-    %p#message{ :class => "success" }
-      = flash[:notice]
-  - if flash[:alert]
-    %p#message{ :class => "fail" }
-      = flash[:alert]
-  - if flash[:error]
-    %p#message{ :class => "fail" }
-      = flash[:error]
-
+= display_flash_messages 
 
   - content_for :challenge do
     - unless flash[:error]

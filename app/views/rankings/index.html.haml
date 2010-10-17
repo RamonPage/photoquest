@@ -1,31 +1,34 @@
+- content_for :message do
+  - if flash[:notice]
+    %p#message{ :class => "success" }
+      = flash[:notice]
+  - if flash[:alert]
+    %p#message{ :class => "fail" }
+      = flash[:alert]
+  - if flash[:error]
+    %p#message{ :class => "fail" }
+      = flash[:error]
+
+
 - content_for :content do
+  #form 
+    - unless  @new_player.blank?
+      = simple_form_for @new_player, :url => rankings_path do |f|
+        = f.input :nick_name
+        = f.button :submit 
+      - 
+    -
+
   #picture
     %h2
       Rank
     
     %ol#rank
-      %li
-        %h3
-          10000
-        %span.player
-          = link_to "@ramonpage", "http://twitter.com/ramonpage"
-      %li.me
-        %h3
-          10000
-        %span.player
-          = link_to "@ramonpage", "http://twitter.com/ramonpage"
-      %li
-        %h3
-          10000
-        %span.player
-          = link_to "@ramonpage", "http://twitter.com/ramonpage"
-      %li
-        %h3
-          10000
-        %span.player
-          = link_to "@ramonpage", "http://twitter.com/ramonpage"
-      %li
-        %h3
-          10000
-        %span.player
-          = link_to "@ramonpage", "http://twitter.com/ramonpage"
+      - @ranking.each do |p| 
+        %li{ :class => p.id == session[:player_id] ? "me" : nil }
+          %h3
+            = p.score
+          %span.player
+            = link_to p.nick_name, "@#{p[:player_id]}", p[:player_id]
+      - 
+
