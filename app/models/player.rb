@@ -4,6 +4,7 @@ class Player < CouchRest::Model::Base
   collection_of :moves
   property :last_move_id, String
   property :nick_name, String
+  property :twitter_image_url
   
   SCORE_MAP_FUNCTION = <<MAP
     function(doc) {
@@ -18,7 +19,7 @@ MAP
   RANKING_MAP_FUNCTION = <<MAP
     function(doc) {
       if (doc['couchrest-type'] == "Player") {
-        emit([doc._id, doc.nick_name], 0);
+        emit([doc._id, doc.nick_name, doc.twitter_image_url], 0);
       } else if (doc['couchrest-type'].match(/.*Move$/)) {
         if (doc['player_id'] != null) {
           emit([doc.player_id], doc.earned_points);
@@ -38,6 +39,8 @@ REDUCE
 
   view_by :score, :map => SCORE_MAP_FUNCTION, :reduce => REDUCE_FUNCTION
   view_by :ranking, :map => RANKING_MAP_FUNCTION, :reduce => REDUCE_FUNCTION
+
+  after_create :set_twitter_image_url
 
   def sign_up!(nick_name)
     self.nick_name = nick_name 
@@ -103,12 +106,14 @@ REDUCE
     result = people = keys.map do |key|
       local_rows = rows.select { |row| row["key"].first == key }
       nick_name = ''
+      twitter_image_url = ''
       score = 0
       local_rows.each do |local_row|
-        nick_name = local_row["key"][1] if local_row["key"].size == 2
+        nick_name = local_row["key"][1] if local_row["key"][1]
+        twitter_image_url = local_row["key"][2] if local_row["key"][2]
         score = local_row["value"] if local_row["key"].size < 2
       end
-      { :id => key, :nick_name => nick_name, :score => score }
+      { :id => key, :nick_name => nick_name, :score => score, :twitter_image_url => twitter_image_url }
     end.uniq
     result.sort { |a, b| a[:score] <=> b[:score] }.reverse
   end
@@ -124,4 +129,26 @@ REDUCE
       []
     end
   end
+  
+  def set_twitter_image_url
+    if self.nick_name.present?
+      self.twitter_image_url = get_twitter_image
+      save if self.twitter_image_url
+    end
+  end
+
+  private
+  
+  def get_twitter_image
+    begin
+      Timeout::timeout(5) {
+        oauth = Twitter::OAuth.new TWITTER_KEYS["consumer_key"], TWITTER_KEYS["consumer_secret"]
+        oauth.authorize_from_access TWITTER_KEYS["access_token"], TWITTER_KEYS["access_token_secret"]    
+        client = Twitter::Base.new(oauth)
+        client.user(self.nick_name).profile_image_url
+      }
+    rescue
+    end
+  end
+  
 end 
