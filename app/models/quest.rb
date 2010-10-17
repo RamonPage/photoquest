@@ -14,13 +14,8 @@ class Quest < CouchRest::Model::Base
   end
 
   def self.find_quest_for(player)
-    return draw if player.nil? 
-
-    answered_quests =  player.answered_quests
-    
-    return draw if answered_quests.nil? or answered_quests.empty?
-
-    new_quests = all - answered_quests
+    return draw if player.nil? || player.answered_quests.blank?
+    new_quests = all - player.answered_quests
     new_quests.draw.first 
   end 
   

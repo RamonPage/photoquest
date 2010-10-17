@@ -1,8 +1,10 @@
 - content_for :message do
-  - if @move
-    %p#message{ :class => @move.correct? ? "correct" : "fail" }
-      = "You are correct!" if @move.correct?
-      = "You lose!" unless @move.correct?
+  - if flash[:notice]
+    %p#message{ :class => "correct" }
+      = flash[:notice]
+  - if flash[:alert]
+    %p#message{ :class => "fail" }
+      = flash[:alert]
 
 - content_for :challenge do
   %ul#possible_answers
