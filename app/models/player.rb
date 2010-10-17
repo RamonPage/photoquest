@@ -3,7 +3,7 @@
 class Player < CouchRest::Model::Base
   collection_of :moves
   property :last_move_id, String
-  property :nick_name, String
+  property :nick_name, String, :default => 'vinicius'
   
   SCORE_MAP_FUNCTION = <<MAP
     function(doc) {
@@ -17,9 +17,11 @@ MAP
 
   RANKING_MAP_FUNCTION = <<MAP
     function(doc) {
-      if (doc['couchrest-type'].match(/.*Move$/)) {
+      if (doc['couchrest-type'] == "Player") {
+        emit([doc._id, doc.nick_name], 0);
+      } else if (doc['couchrest-type'].match(/.*Move$/)) {
         if (doc['player_id'] != null) {
-          emit(doc['player_id'], doc.earned_points)
+          emit([doc.player_id], doc.earned_points);
         }
       }
     }
@@ -86,9 +88,19 @@ REDUCE
     0
   end
   
-  def ranking
-    result = Player.by_ranking :reduce => true, :group => true, :limit => 20, :descending => true
-    ranking = result['rows']
+  def self.ranking
+    rows = Player.by_ranking(:include_docs => false, :reduce => true, :group => true, :include_docs => false, :limit => 100, :descending => true)["rows"]
+    keys = rows.map { |r| r["key"].first }
+    people = keys.map do |key|
+      local_rows = rows.select { |row| row["key"].first == key }
+      nick_name = ''
+      score = 0
+      local_rows.each do |local_row|
+        nick_name = local_row["key"][1] if local_row["key"].size == 2
+        score = local_row["value"] if local_row["key"].size < 2
+      end
+      { :nick_name => nick_name, :score => score }
+    end.uniq
   end
   
   def last_answers
