@@ -3,7 +3,7 @@ class ChallengesController < ApplicationController
   before_filter :fetch_quest, :except => ['create', 'move']
 
   def index
-    @score = Score.new(@player).calculate if @player.moves.present?
+    @score = @player.score
     @new_quest = Quest.new
   end
 
@@ -11,7 +11,7 @@ class ChallengesController < ApplicationController
     @quest = @player.create_quest(params[:quest]) 
     if @quest.valid?
       
-      @score = Score.new(@player).calculate
+      @score = @player.score
     else
       flash[:error] = "Ops, there was no possible to record your quest."
 
@@ -32,7 +32,7 @@ class ChallengesController < ApplicationController
 
   def show
     @quest = Quest.get(params[:id]) || Quest.find_by_short_id(params[:short_id])
-    @score = Score.new(@player).calculate
+    @score = @player.score
     @new_quest = Quest.new
     render :action => :index
   end

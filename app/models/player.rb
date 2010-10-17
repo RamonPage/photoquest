@@ -3,6 +3,27 @@
 class Player < CouchRest::Model::Base
   collection_of :moves
   property :last_move_id, String
+  
+  SCORE_MAP = <<MAP
+    function(doc) {
+      if (doc['couchrest-type'].match(/.*Move$/)) {
+        if (doc['player_id'] != null) {
+          emit(doc['player_id'], doc.earned_points)
+        }
+      }
+    }
+MAP
+
+  SCORE_REDUCE = <<REDUCE
+    function(key, values) {
+      if (values) {
+        return sum(values);
+      }
+      return null;  
+    }
+REDUCE
+
+  view_by :score, :map => SCORE_MAP, :reduce => SCORE_REDUCE
 
   def create_quest(params)
     @quest = Quest.create(params)
@@ -10,6 +31,7 @@ class Player < CouchRest::Model::Base
 
     @quest 
   end 
+  
   def answered_quests
     self.moves.collect do |move|
       move.quest if move.respond_to?(:quest)
@@ -46,11 +68,21 @@ class Player < CouchRest::Model::Base
     @move 
   end 
   
+  def score
+    result = Player.by_score :key => self.id, :reduce => true
+    return result["rows"].first["value"] if result["rows"] && result["rows"].first && result["rows"].first["value"]
+    0
+  end
+  
   def last_answers
     move = Move.get self.last_move_id
-    quest = move.quest
-    quest.answers.map do |answer|
-      { :answer => answer, :chosen => move.answer, :correct => quest.correct_answer }
+    if move && move.quest
+      quest = move.quest
+      quest.answers.map do |answer|
+        { :answer => answer, :chosen => move.answer, :correct => quest.correct_answer }
+      end
+    else
+      []
     end
   end
 end 

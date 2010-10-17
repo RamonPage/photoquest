@@ -1,7 +1,3 @@
 class SharingMove < Move
-  
-  def earned_points
-    500
-  end
-  
+  property :earned_points, :default => 500
 end

@@ -1,8 +1,6 @@
 class Move < CouchRest::Model::Base
   
+  property :earned_points, :default => 0
   belongs_to :player
   
-  def earned_points
-    0
-  end
 end
