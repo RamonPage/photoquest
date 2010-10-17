@@ -7,7 +7,10 @@ class RankingsController < ApplicationController
   end
 
   def create
-    if @player.sign_up! params[:player][:nick_name]
+    
+    nick_name_sem_arroba = params[:player][:nick_name].gsub(/@/, "") unless params[:player][:nick_name].blank?
+
+    if @player.sign_up! nick_name_sem_arroba 
       flash[:notice] = "Congratulations. Now you've entered in photoque.st hall of fame!"
       session[:player_id] = @player.id 
     end 
