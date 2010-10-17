@@ -22,7 +22,4 @@
 - content_for :content do
   = render :partial => "pictures", :locals => { :quest => @new_quest }
   
-  - content_for :sidebar do
-    #sidebar
-      %h3 Score
-      #score= @score
+  = render :partial => 'sidebar' if @score

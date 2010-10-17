@@ -321,29 +321,13 @@ ul#possible_answers li {
 	float: left;
 }
 
-ol#rank {
-	text-align: left;
-	margin: 0 40px 0 80px;
-	font-size: 1.6em;
-	border-top: 1px solid #ECE5CE;
-	border-bottom: 1px solid #fff;
-}
-
-ol#rank li {
-	padding: 20px;
-	height: 30px;
-	clear: left;
-	border-bottom: 1px solid #ECE5CE;
-	border-top: 1px solid #fff;
-}
-
 ol#rank li.me {
 	background-color: #dbd4bd;
 }
 
 #me .simple_form {
-   padding-bottom: 5em; 
-	width: 460px;
+  padding-bottom: 5em; 
+	width: 480px;
 }
 
 #me .simple_form label {
@@ -368,7 +352,30 @@ ol#rank li.me {
    float: right;
 }
 
+ol#rank {
+	text-align: left;
+	margin: 0 40px;
+	font-size: 1.6em;
+	border-top: 1px solid #ECE5CE;
+	border-bottom: 1px solid #fff;
+	list-style-type: none;
+}
 
+ol#rank li {
+	padding: 20px;
+	height: 30px;
+	clear: left;
+	border-bottom: 1px solid #ECE5CE;
+	border-top: 1px solid #fff;
+}
+
+ol#rank li .index {
+	margin: 0;
+	font-family: Helvetica,Arial,sans-serif;
+	float: left;
+	width: 30px;
+	font-size: .8em;
+}
 
 ol#rank li h3 {
 	margin: -10px 0 0 0;
@@ -382,6 +389,11 @@ ol#rank li .player {
 	margin: 0;
 	float: left;
 	font-size: .8em;
+	vertical-align: middle;
+}
+
+ol#rank li .player img {
+	width: 32px !important;
 	vertical-align: middle;
 }
 
