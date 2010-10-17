@@ -1,18 +1,18 @@
 - content_for :message do
   %p#message{ :class => "success" }
     = "Your photo has been sent!"
-
+  
 - content_for :challenge do
   %ul#options
     %li
       %h3 Challenge your friends
-      %a{ :href => "http://twitter.com/home?status=Where is this place? #{request.protocol+request.host_with_port}/c/#{@quest.id}" }
+      %a{ :href => "http://twitter.com/home?status=Where is this place? #{challenge_url(@quest.id)}" }
         %img{ :src => "/images/icon-twitter.png", :alt => "Share on Twitter"}
 
-      %a{ :href => "http://www.facebook.com/sharer.php?u=#{request.protocol+request.host_with_port}/c/#{@quest.id}&t=Where is this place? #{request.protocol+request.host_with_port}/c/#{@quest.id}" }
+      %a{ :href => "http://www.facebook.com/sharer.php?u=#{challenge_url(@quest.id)}&t=Where is this place? #{challenge_url(@quest.id)}" }
         %img{ :src => "/images/icon-facebook.png", :alt => "Share on Facebook"}
 
-      %a{ :href => "#{request.protocol+request.host_with_port}/c/#{@quest.id}" }
+      %a{ :href => "http://promote.orkut.com/preview?nt=orkut.com&tt=Where is this place? #{challenge_url(@quest.id)}&du=#{challenge_url(@quest.id)}" }
         %img{ :src => "/images/icon-orkut.png", :alt => "Share on Orkut"}
 
     %li
