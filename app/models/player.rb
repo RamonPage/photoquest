@@ -37,6 +37,20 @@ REDUCE
   view_by :score, :map => SCORE_MAP_FUNCTION, :reduce => REDUCE_FUNCTION
   view_by :ranking, :map => RANKING_MAP_FUNCTION, :reduce => REDUCE_FUNCTION
 
+
+  def self.ranking
+    all
+  end
+
+  def sign_up!(nick_name)
+    self.nick_name = nick_name 
+    self.save! 
+  end 
+
+  def already_signed_up?
+    !self.nick_name.blank?
+  end 
+
   def create_quest(params)
     @quest = Quest.create(params)
     self.create_sharing_move
