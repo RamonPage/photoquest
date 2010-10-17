@@ -4,7 +4,7 @@ class Player < CouchRest::Model::Base
   collection_of :moves
   property :last_move_id, String
   property :nick_name, String
-  property :twitter_image_url
+  property :twitter_image_url, String 
   
   SCORE_MAP_FUNCTION = <<MAP
     function(doc) {
