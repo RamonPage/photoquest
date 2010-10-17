@@ -9,8 +9,6 @@ class Quest < CouchRest::Model::Base
   property :correct_answer, String
   property :incorrect_answers, [String]
   
-  validates_presence_of :image_url, :page_where_image_is, :correct_answer, :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4
-  
   before_create :adapt_incorrect_answers
   
   def correct_answer?(answer)
@@ -36,20 +34,20 @@ class Quest < CouchRest::Model::Base
   end
   
   def twitter_image_url
-    if read_attribute('twitter_image_url').blank?
-      if twitter_screen_name.present?
-        begin
-          Timeout::timeout(5) {
-            oauth = Twitter::OAuth.new TWITTER_KEYS["consumer_key"], TWITTER_KEYS["consumer_secret"]
-            oauth.authorize_from_access TWITTER_KEYS["access_token"], TWITTER_KEYS["access_token_secret"]    
-            client = Twitter::Base.new(oauth)
-            write_attribute('twitter_image_url', client.user(twitter_screen_name).profile_image_url)
-          }
-        rescue
-        end
-      end
-    end
-    read_attribute('twitter_image_url')
+    # if read_attribute('twitter_image_url').blank?
+    #       if twitter_screen_name.present?
+    #         begin
+    #           Timeout::timeout(5) {
+    #             oauth = Twitter::OAuth.new TWITTER_KEYS["consumer_key"], TWITTER_KEYS["consumer_secret"]
+    #             oauth.authorize_from_access TWITTER_KEYS["access_token"], TWITTER_KEYS["access_token_secret"]    
+    #             client = Twitter::Base.new(oauth)
+    #             write_attribute('twitter_image_url', client.user(twitter_screen_name).profile_image_url)
+    #           }
+    #         rescue
+    #         end
+    #       end
+    #     end
+    #     read_attribute('twitter_image_url')
   end
   
   def adapt_incorrect_answers
