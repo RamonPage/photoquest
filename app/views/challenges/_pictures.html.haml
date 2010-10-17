@@ -1,0 +1,7 @@
+#picture
+  = image_tag(quest.image_url, :alt => "Photo #{quest.id}")
+  - if quest.twitter_screen_name
+    #author
+      %span#by by
+      = image_tag(quest.twitter_image_url, :alt => "@#{quest.twitter_screen_name}") if quest.twitter_image_url
+      = link_to "@#{quest.twitter_screen_name}", "http://twitter.com/#{quest.twitter_screen_name}" if quest.twitter_screen_name

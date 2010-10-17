@@ -11,4 +11,26 @@ describe Player do
     player.answered_quests.should include(fetch_quest_from_move('move2'))
     player.answered_quests.should_not include(fetch_quest_from_move('move3'))
   end
+
+  describe "creation of a new move" do
+
+    before do
+      @params = { :quest_id => '1', :answer => 'Portland' }
+      @player = Player.new
+    end
+    it 'should create a new move' do
+      proc { @player.create_new_move(@params) }.should change(AnswerMove, :count).by(1)
+    end
+
+    it 'should add the created move to this players moves' do
+      proc { @player.create_new_move(@params) }.should change(@player.moves, :size).by(1) 
+    end
+
+    it "should return the created move" do
+      @move = @player.create_new_move(@params)
+      @move.id.should_not be_nil
+      @move.quest_id.should_not be_nil
+      @move.answer.should  == 'Portland' 
+    end 
+  end 
 end

@@ -16,9 +16,7 @@ class ChallengesController < ApplicationController
   end
   
   def move
-    @move = AnswerMove.create :quest_id => params[:id], :answer => params[:answer]
-    @player.moves << @move
-    @player.save
+    @move = @player.create_new_move :quest_id => params[:id], :answer => params[:answer]
     if @move.correct_answer?
       flash[:notice] = "You are correct!" 
     else  
@@ -31,6 +29,7 @@ class ChallengesController < ApplicationController
   def show
     @quest = Quest.get params[:id]
     fetch_current_player
+
     @score = Score.new(@player).calculate
     render :action => :index
   end
