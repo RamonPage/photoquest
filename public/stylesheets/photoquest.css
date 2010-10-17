@@ -43,6 +43,22 @@ body {
 	color: #E08E79;
 }
 
+#railsrumble {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+
+#railsrumble a {
+	display: block;
+	width: 128px;
+	height: 127px;
+	border: none;
+	background: transparent url("/images/railsrumble.png") no-repeat 0 0;
+	text-indent: -9999px;
+}
+
 /*
 General
 */
@@ -201,6 +217,24 @@ Sidebar
 #sidebar #send-quest a {
 	color: #fff;
 	text-shadow: none;
+}
+
+#sidebar #last-move li {
+	padding: 4px 0;
+	font-size: 1.2em;
+}
+
+#sidebar #last-move li.correct {
+	color: #1B676B;
+}
+
+#sidebar #last-move li.win {
+	background: transparent url("/images/tick.png") no-repeat top right;
+}
+
+#sidebar #last-move li.incorrect {
+	color: #E08E79;
+	text-decoration: line-through;
 }
 
 /*

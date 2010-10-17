@@ -1,6 +1,6 @@
 class Player < CouchRest::Model::Base
   collection_of :moves
-  property :last_move , Move
+  property :last_move , PastMove
 
   def answered_quests
     self.moves.collect do |move|
@@ -24,7 +24,7 @@ class Player < CouchRest::Model::Base
   def create_answer_move(params={})
     @move = AnswerMove.create(params)
     self.moves << @move
-    self.last_move = @move 
+    self.last_move = PastMove.new(@move) 
     self.save
 
     @move 
