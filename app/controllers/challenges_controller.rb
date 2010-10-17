@@ -6,18 +6,16 @@ class ChallengesController < ApplicationController
     @score = Score.new(@player).calculate if @player.moves.present?
   end
 
-  # TODO: refactor move the sharing move create inside the Quest.create(player, params[:quest]) 
   def create
     Quest.create params[:quest]
     @quest = Quest.first
     fetch_current_player
-    @player.moves << SharingMove.create
-    @player.save
+    @player.create_sharing_move
     @score = Score.new(@player).calculate
   end
   
   def move
-    @move = @player.create_new_move :quest_id => params[:id], :answer => params[:answer]
+    @move = @player.create_answer_move :quest_id => params[:id], :answer => params[:answer]
     if @move.correct_answer?
       flash[:notice] = "You are correct!" 
     else  
