@@ -157,10 +157,11 @@ Header
 #header #challenge #options li a#play {
 	font-family: "Times New Roman", Times, Georgia, Serif;
 	font-size: 6em;
-	line-height: 2em;
+	line-height: 0;
 	border: none;
 	margin: 0;
 	display: block;
+	height: 20px;
 }
 
 /*
