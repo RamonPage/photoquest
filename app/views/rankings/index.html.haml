@@ -17,13 +17,15 @@
     - if @new_player 
       %div#me
         = simple_form_for @new_player, :url => rankings_path do |f|
-          = f.input :nick_name, :label => "Your Twitter", :hint => "Ex: @pellegrino"
+          = f.input :nick_name, :label => "Your Twitter", :placeholder => "@pellegrino"
           = f.submit :add
     
     %ol#rank
  
-      - @ranking.each do |p|
+      - @ranking.each_with_index do |p, index|
         %li{ :class => p[:id] == session[:player_id] ? "me" : nil }
+          %div.index
+            = "#{index+1}."
           %h3
             = p[:score]
           %div.player
