@@ -6,7 +6,7 @@ SimpleForm.setup do |config|
   # config.components = [ :label_input, :hint, :error ]
 
   # Default tag used on hints.
-  # config.hint_tag = :span
+  config.hint_tag = :div
 
   # Default tag used on errors.
   # config.error_tag = :span
