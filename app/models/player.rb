@@ -3,7 +3,7 @@
 class Player < CouchRest::Model::Base
   collection_of :moves
   property :last_move_id, String
-  property :nick_name, String, :default => 'vinicius'
+  property :nick_name, String
   
   SCORE_MAP_FUNCTION = <<MAP
     function(doc) {
