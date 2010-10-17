@@ -21,15 +21,15 @@ describe Player do
       @player = Player.new
     end
     it 'should create a new move' do
-      proc { @player.create_new_move(@params) }.should change(AnswerMove, :count).by(1)
+      proc { @player.create_answer_move(@params) }.should change(AnswerMove, :count).by(1)
     end
 
     it 'should add the created move to this players moves' do
-      proc { @player.create_new_move(@params) }.should change(@player.moves, :size).by(1) 
+      proc { @player.create_answer_move(@params) }.should change(@player.moves, :size).by(1) 
     end
 
     it "should return the created move" do
-      @move = @player.create_new_move(@params)
+      @move = @player.create_answer_move(@params)
       @move.id.should_not be_nil
       @move.quest_id.should_not be_nil
       @move.answer.should  == 'Portland' 

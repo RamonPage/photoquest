@@ -7,7 +7,12 @@ class Player < CouchRest::Model::Base
     end 
   end
 
-  def create_new_move(params)
+  def create_sharing_move
+    self.moves << SharingMove.create
+    self.save
+  end
+
+  def create_answer_move(params)
     @move = AnswerMove.create(params)
     self.moves << @move
     self.save

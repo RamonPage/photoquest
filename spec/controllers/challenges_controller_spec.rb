@@ -42,7 +42,7 @@ describe ChallengesController do
     end
     
     it "should create a move for this player" do 
-      mock_player.should_receive(:create_new_move).with(:quest_id => 'quest1', :answer => 'Portland').and_return(mock_move)
+      mock_player.should_receive(:create_answer_move).with(:quest_id => 'quest1', :answer => 'Portland').and_return(mock_move)
       post :move, :id => "quest1" , :answer => "Portland"
       assigns[:move].should be_eql(mock_move)
     end 

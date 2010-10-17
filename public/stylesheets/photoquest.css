@@ -17,25 +17,6 @@ body {
   font-size: 1.2em;
 }
 
-#railsrumble {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 1000;
-	background: transparent url("/images/railsrumble.png?1234") no-repeat 0 0;
-	width: 224px;
-	height: 223px;
-	display: none;	
-}
-
-#railsrumble a {
-	display: block;
-	width: 224px;
-	height: 223px;
-	border: none;
-	text-indent: -9999px;
-}
-
 #message {
 	position: absolute;
 	top: 0;
@@ -179,6 +160,8 @@ Header
 	line-height: 0;
 	border: none;
 	margin: 0;
+	display: block;
+	height: 20px;
 }
 
 /*

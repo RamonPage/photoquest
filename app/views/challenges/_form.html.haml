@@ -1,0 +1,11 @@
+= simple_form_for @new_quest, :url => challenges_path do |f|
+  %fieldset
+    = f.input :image_url, :input_html => { :maxlength => 200 }, :hint => "Ex: http://farm3.static.flickr.com/2714/4108388883_a374402ea2.jpg"
+    = f.input :page_where_image_is, :input_html => { :maxlength => 200 }, :hint => "Ex: http://www.flickr.com/photos/viniciusteles/4108388883/"
+    = f.input :correct_answer, :input_html => { :maxlength => 40 }, :hint => "Ex: Paris"
+    = f.input :incorrect_answer1, :input_html => { :maxlength => 40 }, :hint => "Ex: London"
+    = f.input :incorrect_answer2, :input_html => { :maxlength => 40 }, :hint => "Ex: Madrid"
+    = f.input :incorrect_answer3, :input_html => { :maxlength => 40 }, :hint => "Ex: Rome"
+    = f.input :incorrect_answer4, :input_html => { :maxlength => 40 }, :hint => "Ex: Brussels"
+    = f.input :twitter_screen_name, :input_html => { :maxlength => 40 }, :hint => "Ex: @viniciusteles"
+    = f.button :submit
