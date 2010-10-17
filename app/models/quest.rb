@@ -63,7 +63,7 @@ class Quest < CouchRest::Model::Base
   end
   
   def twitter_image_url
-    if read_attribute('twitter_image_url').blank?
+    if read_attribute('twitter_image_url').blank? and Rails.env.production?
       if twitter_screen_name.present?
         begin
           Timeout::timeout(5) {
