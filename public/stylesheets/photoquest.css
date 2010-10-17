@@ -138,6 +138,13 @@ h4 {
 	color: #036564;
 }
 
+#sidebar h4 {
+	color: #fff;
+	text-shadow: none;
+	margin: 1em 0 .4em 0;
+	border-bottom: 2px solid #fff;
+}
+
 /*
 Header
 */
@@ -218,6 +225,11 @@ Sidebar
 #sidebar #send-quest a {
 	color: #fff;
 	text-shadow: none;
+}
+
+#sidebar #last-move {
+	padding: 0 0 1px 0;
+	border-bottom: 2px solid #fff;
 }
 
 #sidebar #last-move li {

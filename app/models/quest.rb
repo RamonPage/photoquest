@@ -63,21 +63,21 @@ class Quest < CouchRest::Model::Base
   end
   
   def twitter_image_url
-    # if read_attribute('twitter_image_url').blank?
-    #       if twitter_screen_name.present?
-    #         begin
-    #           Timeout::timeout(5) {
-    #             oauth = Twitter::OAuth.new TWITTER_KEYS["consumer_key"], TWITTER_KEYS["consumer_secret"]
-    #             oauth.authorize_from_access TWITTER_KEYS["access_token"], TWITTER_KEYS["access_token_secret"]    
-    #             client = Twitter::Base.new(oauth)
-    #             write_attribute('twitter_image_url', client.user(twitter_screen_name).profile_image_url)
-    #            self.save
-    #           }
-    #         rescue
-    #         end
-    #       end
-    #     end
-    #     read_attribute('twitter_image_url')
+    if read_attribute('twitter_image_url').blank?
+      if twitter_screen_name.present?
+        begin
+          Timeout::timeout(5) {
+            oauth = Twitter::OAuth.new TWITTER_KEYS["consumer_key"], TWITTER_KEYS["consumer_secret"]
+            oauth.authorize_from_access TWITTER_KEYS["access_token"], TWITTER_KEYS["access_token_secret"]    
+            client = Twitter::Base.new(oauth)
+            write_attribute('twitter_image_url', client.user(twitter_screen_name).profile_image_url)
+            self.save
+          }
+        rescue
+          end
+        end
+      end
+    read_attribute('twitter_image_url')
   end
   
   def adapt_incorrect_answers
@@ -96,6 +96,6 @@ class Quest < CouchRest::Model::Base
   end
   
   def remove_arroba
-    write_attribute(:twitter_screen_name, self.twitter_screen_name.sub!(/@/, "")) unless self.twitter_screen_name.blank?
+    write_attribute(:twitter_screen_name, self.twitter_screen_name.gsub(/@/, "")) unless self.twitter_screen_name.blank?
   end
 end
