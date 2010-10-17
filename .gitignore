@@ -2,6 +2,8 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
+tmp
+tmp/new_relic*
 .sass-cache
 *.swp
 coverage*
