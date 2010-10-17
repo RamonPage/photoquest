@@ -23,7 +23,8 @@ class Quest < CouchRest::Model::Base
   before_create :remove_arroba
   after_create :create_short_id
   after_create :set_twitter_image_url
-
+  
+  view_by :abuses_reported
 
   def mark_as_abuse!(player)
     self.abuses_reported = self.abuses_reported + 1 
@@ -82,7 +83,6 @@ class Quest < CouchRest::Model::Base
   end
   
   def strip_quest
-    write_attribute(:page_where_image_is, self.page_where_image_is.strip) unless self.page_where_image_is.blank?
     write_attribute(:twitter_screen_name, self.twitter_screen_name.strip) unless self.twitter_screen_name.blank?
     write_attribute(:correct_answer, self.correct_answer.strip) unless self.correct_answer.blank?
   end
