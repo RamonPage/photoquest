@@ -341,6 +341,23 @@ ol#rank li.me {
 	background-color: #dbd4bd;
 }
 
+ol#rank li .simple_form {
+	width: 460px;
+}
+
+ol#rank li .simple_form label {
+	text-align: left;
+	width: 100px;
+}
+
+ol#rank li .simple_form input.string {
+	width: 260px;
+}
+
+ol#rank li .simple_form input[type="submit"] {
+	float: right;
+}
+
 ol#rank li h3 {
 	margin: -10px 0 0 0;
 	font-family: Helvetica,Arial,sans-serif;
