@@ -16,4 +16,8 @@ class AnswerMove < Move
     0
   end
   
+  def quest
+    return Quest.get(self.quest_id) if self.quest_id
+  end
+  
 end

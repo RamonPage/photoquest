@@ -12,6 +12,8 @@ class Quest < CouchRest::Model::Base
 
   property :abuses_reported, Integer, :default => 0 
   
+  belongs_to :move
+  
   view_by :short_id
   validates_presence_of :image_url, :page_where_image_is, :correct_answer, :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4
   
