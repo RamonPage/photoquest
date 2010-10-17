@@ -1,6 +1,6 @@
 - content_for :message do
   - if flash[:notice]
-    %p#message{ :class => "correct" }
+    %p#message{ :class => "success" }
       = flash[:notice]
   - if flash[:alert]
     %p#message{ :class => "fail" }
@@ -28,10 +28,10 @@
       = f.input :incorrect_answer4, :input_html => { :maxlength => 40 }
       = f.button :submit
 
-  - if @move
+  - if @score
     - content_for :sidebar do
       #sidebar
         %h3 Score
         #score= @score
         
-        %p#send-quest= link_to "Send a photo and earn 500 points!", "#new_quest_adapter"
+        %p#send-quest= link_to "Send a photo and earn 500 points!", "#new_quest"

@@ -14,6 +14,7 @@ gem 'configloader', "~> 0.2.2"
 gem "inploy"
 gem "arrayextension"
 gem "simple_form"
+gem 'newrelic_rpm'
 
 group :test, :development do
   gem 'steak', '>= 1.0.0.rc.1'

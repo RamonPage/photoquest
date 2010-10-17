@@ -3,11 +3,14 @@ class ChallengesController < ApplicationController
   before_filter :fetch_quest, :except => ['create']
 
   def index
-    @score = Score.new(@player).calculate
+    @score = Score.new(@player).calculate if @player.moves.present?
   end
   
   def create
     Quest.create params[:quest]
+    @quest = Quest.first
+    fetch_current_player
+    @score = Score.new(@player).calculate
   end
   
   def move
@@ -23,6 +26,13 @@ class ChallengesController < ApplicationController
     redirect_to challenges_path
   end
   
+  def show
+    @quest = Quest.get params[:id]
+    fetch_current_player
+    @score = Score.new(@player).calculate
+    render :action => :index
+  end
+
   private
   
   def fetch_current_player
