@@ -17,6 +17,13 @@ class ChallengesController < ApplicationController
     render :action => :index
   end
   
+  def show
+    @quest = Quest.get params[:id]
+    fetch_current_player
+    @score = Score.new(@player).calculate
+    render :action => :index
+  end
+
   private
   
   def correct
