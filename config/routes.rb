@@ -1,6 +1,6 @@
 Rr10Team114::Application.routes.draw do
 
-  get "rankings/index" , :as => "rankings" 
+  get "rankings" , :as => "rankings" 
   get "rankings/create"
 
   get "homes/index", :as => "home" 
