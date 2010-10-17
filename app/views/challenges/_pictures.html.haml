@@ -1,6 +1,6 @@
 #picture
   = image_tag(quest.image_url, :alt => "Photo #{quest.id}")
-  - if quest.twitter_screen_name
+  - if quest.twitter_screen_name.present?
     #author
       %span#by by
       = image_tag(quest.twitter_image_url, :alt => "@#{quest.twitter_screen_name}") if quest.twitter_image_url
