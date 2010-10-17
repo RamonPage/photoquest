@@ -14,3 +14,7 @@
   quest_id: quest4
   answer: Zurich
 
+- id: correct_move1
+  quest_id: quest4
+  answer: Windsor
+
