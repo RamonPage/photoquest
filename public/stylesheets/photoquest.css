@@ -276,12 +276,22 @@ ul#possible_answers li {
 	text-align: left;
 }
 
+.simple_form .hint {
+	display: block;
+	clear: both;
+	text-align: right;
+	font-style: italic;
+	font-size: .9em;
+	color: #696969;
+	margin: 2px 36px 8px 0;
+}
+
 .simple_form div {
 	clear: left;
 }
 
 .simple_form label {
-	width: 140px;
+	width: 150px;
 	margin: 0 10px 4px 0;
 	padding: 12px 0 0 0;
 	display: block;
@@ -371,7 +381,7 @@ ul#possible_answers li {
 
 .simple_form input[type="submit"] {
 	float: right;
-	margin: 10px 40px 0 0;
+	margin: 10px 30px 0 0;
 }
 
 /*
