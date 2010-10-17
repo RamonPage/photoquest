@@ -358,6 +358,17 @@ ol#rank li.me {
 #me .simple_form input[type="submit"] {
 	float: right;
 }
+#me .simple_form div.hint {
+   float: right;
+}
+#me .simple_form div.input.string.optional {
+   float: left;
+}
+#me .simple_form #player_submit {
+   float: right;
+}
+
+
 
 ol#rank li h3 {
 	margin: -10px 0 0 0;
