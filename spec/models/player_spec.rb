@@ -12,7 +12,21 @@ describe Player do
     player.answered_quests.should_not include(fetch_quest_from_move('move3'))
   end
 
-  
+  describe "retrieving the last move done by this player" do
+    it "should return nil when there is no move done" do
+      @player = Player.new
+      @player.last_move.should be_nil
+    end
+
+    it "should return the last move done" do 
+      @player = Player.new
+      @player.create_answer_move 
+      @player.last_move.should_not be_nil
+      
+      player_retrieved = Player.find(@player.id)
+      player_retrieved.last_move.should_not be_nil
+    end
+  end 
 
   describe "creation of a new move" do
 
