@@ -1,14 +1,15 @@
 - content_for :sidebar do
-  #sidebar
-    %h3
-      Score
-    #score= link_to @score, rankings_path
+  - if @player.last_answers.present?
+    #sidebar
+      %h3
+        Score
+      #score= link_to @score, rankings_path
     
-    %h4
-      Last move
+      %h4
+        Last move
      
-    %ul#last-move
-      - @player.last_answers.each do |answer|
-        = li_for(answer)
+      %ul#last-move
+        - @player.last_answers.each do |answer|
+          = li_for(answer)
 
-    %p#send-quest= link_to "Send a photo and earn 500 points!", "#new_quest"
+      %p#send-quest= link_to "Send a photo and earn 500 points!", "#new_quest"
