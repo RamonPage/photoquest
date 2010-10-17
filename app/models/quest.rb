@@ -37,10 +37,12 @@ class Quest < CouchRest::Model::Base
     if read_attribute('twitter_image_url').blank?
       if twitter_screen_name.present?
         begin
-          oauth = Twitter::OAuth.new TWITTER_KEYS["consumer_key"], TWITTER_KEYS["consumer_secret"]
-          oauth.authorize_from_access TWITTER_KEYS["access_token"], TWITTER_KEYS["access_token_secret"]    
-          client = Twitter::Base.new(oauth)
-          write_attribute('twitter_image_url', client.user(twitter_screen_name).profile_image_url)
+          Timeout::timeout(5) {
+            oauth = Twitter::OAuth.new TWITTER_KEYS["consumer_key"], TWITTER_KEYS["consumer_secret"]
+            oauth.authorize_from_access TWITTER_KEYS["access_token"], TWITTER_KEYS["access_token_secret"]    
+            client = Twitter::Base.new(oauth)
+            write_attribute('twitter_image_url', client.user(twitter_screen_name).profile_image_url)
+          }
         rescue
         end
       end
