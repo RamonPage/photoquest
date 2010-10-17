@@ -534,3 +534,12 @@ Footer
   padding: 0 20px;
 	color: #774F38;
 }
+
+#footer #by {
+	margin: 10px 0;
+}
+
+#footer #by a {
+	font-size: 1.2em;
+	margin: 0 4px;
+}
