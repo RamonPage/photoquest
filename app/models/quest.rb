@@ -12,9 +12,11 @@ class Quest < CouchRest::Model::Base
   property :abuses_reported, Integer, :default => 0 
   
   view_by :short_id
+  view_by :abuses_reported
+  
   validates_format_of :image_url, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
   validates_format_of :twitter_screen_name, :with => /^[@a-zA-Z0-9_-]{0,40}$/ix
-  validates_presence_of :correct_answer, :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4
+  validates_presence_of :correct_answer, :incorrect_answer1, :incorrect_answer2, :incorrect_answer3, :incorrect_answer4 , :only => [:create]
 
   before_create :adapt_incorrect_answers
   before_create :strip_quest
@@ -46,8 +48,8 @@ REDUCE
   view_by :abuses_reported
 
   def mark_as_abuse!(player)
-    write_attribute(:abuses_reported, read_attribute(:abuses_reported) + 1)
-    save
+    self.abuses_reported = self.abuses_reported + 1 
+    self.save
     player.create_abusive_move(self) 
   end
   
@@ -105,7 +107,6 @@ REDUCE
   end
   
   def strip_quest
-    write_attribute(:page_where_image_is, self.page_where_image_is.strip) unless self.page_where_image_is.blank?
     write_attribute(:twitter_screen_name, self.twitter_screen_name.strip) unless self.twitter_screen_name.blank?
     write_attribute(:correct_answer, self.correct_answer.strip) unless self.correct_answer.blank?
   end
