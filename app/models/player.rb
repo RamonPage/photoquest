@@ -2,8 +2,7 @@
 
 class Player < CouchRest::Model::Base
   collection_of :moves
-  property :last_move , AnswerMove
-
+  property :last_move_id, String
 
   def create_quest(params)
     @quest = Quest.create(params)
@@ -26,21 +25,21 @@ class Player < CouchRest::Model::Base
   end 
 
   def create_sharing_move
-    self.moves << SharingMove.create
+    self.moves << SharingMove.create(:player => self)
     self.save
   end
 
   def create_answer_move(params={})
-    @move = AnswerMove.create(params)
+    @move = AnswerMove.create(params.merge(:player => self))
     self.moves << @move
-    self.last_move = @move
+    self.last_move_id = @move.id
     self.save
 
     @move 
   end
 
   def create_abusive_move(quest)
-    @move = AbusiveMove.create(:quest => quest)
+    @move = AbusiveMove.create(:quest => quest, :player => self)
     self.moves << @move
     self.save
 
@@ -48,12 +47,10 @@ class Player < CouchRest::Model::Base
   end 
   
   def last_answers
-    [
-      { :answer => "London", :chosen => "London", :correct => "London" },
-      { :answer => "Rio", :chosen => "London", :correct => "London" },
-      { :answer => "Madrid", :chosen => "London", :correct => "London" },
-      { :answer => "Paris", :chosen => "Paris", :correct => "London" },
-      { :answer => "São Paulo", :chosen => "London", :correct => "São Paulo" },
-    ]
+    move = Move.get self.last_move_id
+    quest = move.quest
+    quest.answers.map do |answer|
+      { :answer => answer, :chosen => move.answer, :correct => quest.correct_answer }
+    end
   end
 end 

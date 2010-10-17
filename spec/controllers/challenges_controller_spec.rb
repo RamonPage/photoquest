@@ -21,7 +21,7 @@ describe ChallengesController do
     it "should record the current player's quest contribution" do
       mock_player.should_receive(:create_quest).with(@params).and_return(mock_quest) 
       post :create, :quest => @params
-      assigns[:quest].should be_eql(mock_quest) 
+      assigns[:new_quest].should be_eql(mock_quest) 
     end
   end 
 

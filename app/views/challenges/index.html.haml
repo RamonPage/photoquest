@@ -5,21 +5,26 @@
   - if flash[:alert]
     %p#message{ :class => "fail" }
       = flash[:alert]
+  - if flash[:error]
+    %p#message{ :class => "fail" }
+      = flash[:error]
 
 
   - content_for :challenge do
-    - if @quest
-      %ul#possible_answers
-        - @quest.answers.each do |answer|
-          %li= button_to(answer, :action => :move, :id => @quest.id, :answer => answer)
-
+    - unless flash[:error]
+      - if @quest
+        %ul#possible_answers
+          - @quest.answers.each do |answer|
+            %li= button_to(answer, :action => :move, :id => @quest.id, :answer => answer)
+          
 - content_for :content do
-  - if @quest
-    = render :partial => "pictures", :locals => { :quest => @quest }
-  - else
-    = render :partial => "blank_state"
+  - unless flash[:error]
+    - if @quest
+      = render :partial => "pictures", :locals => { :quest => @quest }
+    - else
+      = render :partial => "blank_state"
 
-  #content-extra
+  #content-extra{ :style => flash[:error] ? "display: block" : nil }
     %h2 Send a photo and earn 500 points
     = render :partial => 'form'
   = render :partial => 'sidebar' if @score
