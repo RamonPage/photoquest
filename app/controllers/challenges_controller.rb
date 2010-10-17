@@ -1,6 +1,6 @@
 class ChallengesController < ApplicationController
   before_filter :fetch_current_player, :except => ['create']
-  before_filter :fetch_quest, :except => ['create']
+  before_filter :fetch_quest, :except => ['create', 'move']
 
   def index
     @score = Score.new(@player).calculate if @player.moves.present?

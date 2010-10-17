@@ -35,12 +35,12 @@ class Quest < CouchRest::Model::Base
   end
   
   def fetch_twitter_image
-    if self.twitter_screen_name
-      oauth = Twitter::OAuth.new TWITTER_KEYS["consumer_key"], TWITTER_KEYS["consumer_secret"]
-      oauth.authorize_from_access TWITTER_KEYS["access_token"], TWITTER_KEYS["access_token_secret"]    
-      client = Twitter::Base.new(oauth)
-      self.twitter_image_url = client.user(twitter_screen_name).profile_image_url
-    end
+    # if self.twitter_screen_name
+    #   oauth = Twitter::OAuth.new TWITTER_KEYS["consumer_key"], TWITTER_KEYS["consumer_secret"]
+    #   oauth.authorize_from_access TWITTER_KEYS["access_token"], TWITTER_KEYS["access_token_secret"]    
+    #   client = Twitter::Base.new(oauth)
+    #   self.twitter_image_url = client.user(twitter_screen_name).profile_image_url
+    # end
   end
   
   def adapt_incorrect_answers
