@@ -10,6 +10,10 @@ class Player < CouchRest::Model::Base
 
   def quest_from_last_move
     Quest.get(self.last_move[:quest_id]) if self.last_move.present? 
+  end
+
+  def answer_from_last_move
+    self.last_move[:answer]
   end 
 
   def create_sharing_move
