@@ -8,9 +8,9 @@ class ChallengesController < ApplicationController
   end
 
   def create
-    @quest = Quest.create params[:quest]
+    @quest = @player.create_quest(params[:quest]) 
     if @quest.valid?
-      @player.create_sharing_move
+      
       @score = Score.new(@player).calculate
     else
       flash[:error] = "Ops, there was no possible to record your quest."
