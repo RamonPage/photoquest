@@ -7,6 +7,24 @@ describe ChallengesController do
     Quest.stub!(:draw).and_return(quest)
   end
 
+  describe "POST /create" do
+    before do
+      session[:player_id] =  "player1"
+      Player.stub!(:get).with('player1').and_return(mock_player)
+      @params = { "twitter"  => "pellegrino" , "foo" => "bar" }
+    end 
+    it "should retrieve the current player" do
+      post :create, :quest => @params 
+      assigns[:player].should be_eql(mock_player) 
+    end
+
+    it "should record the current player's quest contribution" do
+      mock_player.should_receive(:create_quest).with(@params).and_return(mock_quest) 
+      post :create, :quest => @params
+      assigns[:quest].should be_eql(mock_quest) 
+    end
+  end 
+
   describe "GET index" do
     
     it "should have a quest" do

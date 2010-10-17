@@ -4,6 +4,13 @@ class Player < CouchRest::Model::Base
   collection_of :moves
   property :last_move_id, String
 
+
+  def create_quest(params)
+    @quest = Quest.create(params)
+    self.create_sharing_move
+
+    @quest 
+  end 
   def answered_quests
     self.moves.collect do |move|
       move.quest if move.respond_to?(:quest)

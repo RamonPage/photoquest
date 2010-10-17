@@ -12,6 +12,26 @@ describe Player do
     player.answered_quests.should_not include(fetch_quest_from_move('move3'))
   end
 
+  describe "quest creation" do
+    before do
+      @params = { "quest"  => "quest" }
+      Quest.stub!(:create).with(@params).and_return(mock_quest) 
+      @player = Player.new 
+    end 
+    it "should create a quest" do
+      Quest.should_receive(:create).with(@params) 
+      @player.create_quest(@params)
+    end 
+    it "should create a sharing move" do
+      @player.should_receive(:create_sharing_move)
+      @player.create_quest(@params) 
+    end 
+    it "should return the quest saved" do
+      @player.create_quest(@params).should be_eql(mock_quest)  
+    end 
+    it "should record player twitters credentials" 
+  end 
+
   describe "retrieving the last move done by this player" do
     it "should return nil when there is no move done" do
       @player = Player.new
