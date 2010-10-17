@@ -13,28 +13,28 @@ describe Score do
     end
     
     it "should be 1000 for one correct move" do
-      move = Move.create :quest => @quest1, :answer => "Chicago"
+      move = AnswerMove.create :quest => @quest1, :answer => "Chicago"
       @player.moves << move
       Score.new(@player).calculate.should == 1000
     end
     
     it "should be 2000 for two correct move on the same quest" do
-      move1 = Move.create :quest => @quest1, :answer => "Chicago"
-      move2 = Move.create :quest => @quest1, :answer => "Chicago"
+      move1 = AnswerMove.create :quest => @quest1, :answer => "Chicago"
+      move2 = AnswerMove.create :quest => @quest1, :answer => "Chicago"
       @player.moves << move1 << move2
       Score.new(@player).calculate.should == 2000
     end
     
     it "should be 2000 for two correct move on different quests" do
-      move1 = Move.create :quest => @quest1, :answer => "Chicago"
-      move2 = Move.create :quest => @quest2, :answer => "London"
+      move1 = AnswerMove.create :quest => @quest1, :answer => "Chicago"
+      move2 = AnswerMove.create :quest => @quest2, :answer => "London"
       @player.moves << move1 << move2
       Score.new(@player).calculate.should == 2000
     end
     
     it "shouldn't count the wrong answers" do
-      move1 = Move.create :quest => @quest1, :answer => "Chicago"
-      move2 = Move.create :quest => @quest2, :answer => "San Francisco"
+      move1 = AnswerMove.create :quest => @quest1, :answer => "Chicago"
+      move2 = AnswerMove.create :quest => @quest2, :answer => "San Francisco"
       @player.moves << move1 << move2
       Score.new(@player).calculate.should == 1000
     end

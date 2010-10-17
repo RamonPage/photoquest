@@ -19,7 +19,7 @@ describe Player do
       @player = Player.new
     end
     it 'should create a new move' do
-      proc { @player.create_new_move(@params) }.should change(Move, :count).by(1)
+      proc { @player.create_new_move(@params) }.should change(AnswerMove, :count).by(1)
     end
 
     it 'should add the created move to this players moves' do

@@ -3,12 +3,12 @@ class Player < CouchRest::Model::Base
 
   def answered_quests
     self.moves.collect do |move|
-      move.quest
+      move.quest if move.respond_to?(:quest)
     end 
   end
 
   def create_new_move(params)
-    @move = Move.create(params)
+    @move = AnswerMove.create(params)
     self.moves << @move
     self.save
 

@@ -53,7 +53,7 @@ describe ChallengesController do
         post :move, :id => "quest1", :answer => "Chicago"
       end 
       it "should return a move" do
-        assigns(:move).correct?.should be_true
+        assigns(:move).correct_answer?.should be_true
       end
     
       it "should redirect to the index page" do
