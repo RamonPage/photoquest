@@ -21,6 +21,7 @@ class Quest < CouchRest::Model::Base
   before_create :strip_quest
   before_create :remove_arroba
   after_create :create_short_id
+  after_create :set_twitter_image_url
 
   def mark_as_abuse!(player)
     self.abuses_reported = self.abuses_reported + 1
@@ -62,22 +63,11 @@ class Quest < CouchRest::Model::Base
     save
   end
   
-  def twitter_image_url
-    # if read_attribute('twitter_image_url').blank?
-    #   if twitter_screen_name.present?
-    #     begin
-    #       Timeout::timeout(5) {
-    #         oauth = Twitter::OAuth.new TWITTER_KEYS["consumer_key"], TWITTER_KEYS["consumer_secret"]
-    #         oauth.authorize_from_access TWITTER_KEYS["access_token"], TWITTER_KEYS["access_token_secret"]    
-    #         client = Twitter::Base.new(oauth)
-    #         write_attribute('twitter_image_url', client.user(twitter_screen_name).profile_image_url)
-    #         self.save
-    #       }
-    #     rescue
-    #       end
-    #     end
-    #   end
-    # read_attribute('twitter_image_url')
+  def set_twitter_image_url
+    if twitter_screen_name.present?
+      self.twitter_image_url = get_twitter_image
+      save if self.twitter_image_url
+    end
   end
   
   def adapt_incorrect_answers
@@ -97,5 +87,19 @@ class Quest < CouchRest::Model::Base
   
   def remove_arroba
     write_attribute(:twitter_screen_name, self.twitter_screen_name.gsub(/@/, "")) unless self.twitter_screen_name.blank?
+  end
+  
+  private
+  
+  def get_twitter_image
+    begin
+      Timeout::timeout(5) {
+        oauth = Twitter::OAuth.new TWITTER_KEYS["consumer_key"], TWITTER_KEYS["consumer_secret"]
+        oauth.authorize_from_access TWITTER_KEYS["access_token"], TWITTER_KEYS["access_token_secret"]    
+        client = Twitter::Base.new(oauth)
+        client.user(twitter_screen_name).profile_image_url
+      }
+    rescue
+    end
   end
 end
