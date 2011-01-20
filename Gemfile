@@ -1,17 +1,15 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.1'
-
 gem "json", "~> 1.4.6"
 gem "json_pure", "~> 1.4.6"
 gem 'inploy' 
-
+gem 'couchrest', '1.0.1'
 gem 'couchrest_model', :git => 'git://github.com/couchrest/couchrest_model.git'
 gem "haml", "~> 3.0.21"
 gem "haml-rails", "~> 0.2"
 gem "jquery-rails", "~> 0.1.3"
 gem 'configloader', "~> 0.2.2"
-gem "inploy"
 gem "arrayextension"
 gem "simple_form"
 gem 'newrelic_rpm'
