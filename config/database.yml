@@ -1,11 +1,11 @@
 development:
   server: http://localhost:5984
-  database: railsrumble_development
+  database: photoquest_development
 
 test:
   server: http://localhost:5984
-  database: railsrumble_test
+  database: photoquest_test
 
 production:
   server: http://localhost:5984
-  database: railsrumble
+  database: photoquest
