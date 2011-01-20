@@ -1,7 +1,6 @@
 --- 
 - !map:Quest 
   image_url: http://farm4.static.flickr.com/3165/2611587165_82bf95805a_o.jpg
-  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2611587165/
   correct_answer: San Francisco
   incorrect_answers: 
   - New York
@@ -13,7 +12,6 @@
   couchrest-type: Quest
 - !map:Quest 
   image_url: http://farm3.static.flickr.com/2787/4109104518_aecd358d2b_o.jpg
-  page_where_image_is: http://www.flickr.com/photos/viniciusteles/4109104518/
   correct_answer: Stockholm
   incorrect_answers: 
   - London
@@ -25,7 +23,6 @@
   couchrest-type: Quest
 - !map:Quest 
   image_url: http://farm4.static.flickr.com/3167/2559460218_dd5ec6e467_o.jpg
-  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2559460218
   correct_answer: Portland
   incorrect_answers: 
   - San Francisco
@@ -37,7 +34,6 @@
   couchrest-type: Quest
 - !map:Quest 
   image_url: http://farm4.static.flickr.com/3081/2558637383_d8a797b758_o.jpg
-  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2558637383/in/set-72157605484089896/
   correct_answer: Chicago
   incorrect_answers: 
   - Portland
@@ -49,7 +45,6 @@
   couchrest-type: Quest
 - !map:Quest 
   image_url: http://farm4.static.flickr.com/3047/2463536032_c39ff57b62_o.jpg
-  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2463536032/in/set-72157604872130657/
   correct_answer: London
   incorrect_answers: 
   - Orlando
@@ -61,7 +56,6 @@
   couchrest-type: Quest
 - !map:Quest 
   image_url: http://farm4.static.flickr.com/3658/4080607831_cdbe797c21_o.jpg
-  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2462704623/in/set-72157604872130657/
   correct_answer: Zurich
   incorrect_answers: 
   - Rio
@@ -74,7 +68,6 @@
   couchrest-type: Quest
 - !map:Quest 
   image_url: http://farm3.static.flickr.com/2401/2460450782_04b0698984_o.jpg
-  page_where_image_is: http://www.flickr.com/photos/viniciusteles/2460450782/in/set-72157604847089076/
   correct_answer: Windsor
   incorrect_answers: 
   - Waterloo

@@ -17,7 +17,6 @@ describe Quest do
     it "should have the expected properties" do
       quest = Quest.get("quest1") 
       quest.image_url.should ==  "http://farm4.static.flickr.com/3081/2558637383_d8a797b758_o.jpg"
-      quest.page_where_image_is = "http://www.flickr.com/photos/viniciusteles/2558637383/in/set-72157605484089896/"
 
       quest.answers.should == %w(Chicago Portland Rio Paris London)
       quest.correct_answer.should == "Chicago"
