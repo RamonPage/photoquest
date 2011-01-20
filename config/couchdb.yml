@@ -7,6 +7,6 @@ test:
   database: photoquest_test
 
 production:
-  # server: http://photoquest:twrumble762@photoquest.cloudant.com:5984
-  server: http://photoquest.couchone.com:5984
+  server: http://photoquest:twrumble762@photoquest.cloudant.com:5984
+  # server: http://photoquest.couchone.com:5984
   database: photoquest
