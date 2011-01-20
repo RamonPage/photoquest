@@ -8,3 +8,4 @@ tmp/new_relic*
 *.swp
 coverage*
 .DS_Store
+.rvmrc
