@@ -1,5 +1,5 @@
 require 'couchrest/model'
-# db_config = ConfigLoader.load('database')
-CouchServer = CouchRest::Server.new("http://photoquest.couchone.com:5984")
-CouchServer.default_database = "photoquest"
-CouchRest::Model::Base.use_database CouchServer.default_database
+db_config = ConfigLoader.load('couchdb')
+couch_server = CouchRest::Server.new(db_config['server'])
+couch_server.default_database = db_config['database']
+CouchRest::Model::Base.use_database couch_server.default_database
